@@ -25,7 +25,7 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
 
-    <h1>Home</h1>
+    <h1>Landing</h1>
 
     <?php if (isset($user)): ?>
 
@@ -35,9 +35,10 @@ if (isset($_SESSION["user_id"])) {
 
     <?php else: ?>
 
-        <a href="forgot-password.php">Forgot password?</a>
-        <a href="login.php">Log in</a>
-        <a href="signup.php">sign up</a>
+        <a href="forgot-password.php">Forgot password?</a><br>
+        <a href="login.php">Log in</a><br>
+        <a href="signup.php">Sign up</a>
+
 
     <?php endif; ?>
 

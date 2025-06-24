@@ -28,13 +28,15 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Reset Password</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
+
 <body>
 
     <h1>Reset Password</h1>
@@ -47,11 +49,11 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
         <input type="password" id="password" name="password">
 
         <label for="password_confirmation">Repeat password</label>
-        <input type="password" id="password_confirmation"
-               name="password_confirmation">
+        <input type="password" id="password_confirmation" name="password_confirmation">
 
         <button>Send</button>
     </form>
 
 </body>
+
 </html>
