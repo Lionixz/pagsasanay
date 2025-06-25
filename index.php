@@ -1,47 +1,21 @@
 <?php
-
 session_start();
 
+$user = null;
+
 if (isset($_SESSION["user_id"])) {
+    $mysqli = require __DIR__ . "/config/database.php";
 
-    $mysqli = require __DIR__ . "/database.php";
-
-    $sql = "SELECT * FROM user
-            WHERE id = {$_SESSION["user_id"]}";
-
-    $result = $mysqli->query($sql);
-
+    $sql = "SELECT * FROM user WHERE id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $_SESSION["user_id"]);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 }
-
 ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Home</title>
-    <meta charset="UTF-8">
-</head>
-
-<body>
-
-    <h1>Landing</h1>
-
-    <?php if (isset($user)): ?>
-
-        <p>Hello <?= htmlspecialchars($user["name"]) ?></p>
-
-        <p><a href="logout.php">Log out</a></p>
-
-    <?php else: ?>
-
-        <a href="forgot-password.php">Forgot password?</a><br>
-        <a href="login.php">Log in</a><br>
-        <a href="signup.php">Sign up</a>
-
-
-    <?php endif; ?>
-
-</body>
-
-</html>
+<?php
+header("Location: auth/login.php");
+exit;
+?>
