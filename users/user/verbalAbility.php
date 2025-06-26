@@ -3,7 +3,6 @@
 
 <?php include('includes/head.php'); ?> <!-- Include head.php -->
 
-
 <style>
     .card {
         display: none;
@@ -114,12 +113,13 @@
             // verbal ability
             $conn = require_once __DIR__ . '/config/database.php';
             $variable = 10; // Limit
-            
             $sql = "SELECT * FROM verbalability GROUP BY word, type ORDER BY RAND()";
             $result = $conn->query($sql);
+
             if (!$result) {
                 die("Query failed: " . $conn->error);
             }
+
             $questions = [];
             while ($row = $result->fetch_assoc()) {
                 $choices = [
@@ -256,9 +256,6 @@
                 currentCard = findFirstUnanswered();
                 updateCards();
             </script>
-
-
-
 
         </div>
     </main>

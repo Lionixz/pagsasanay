@@ -1,0 +1,78 @@
+Algebra 1 Topics
+====================
+
+1. Foundations and Basics
+----------------------------
+- Variables and Expressions
+- Order of Operations (PEMDAS)
+- Properties of Real Numbers (commutative, associative, distributive, identity, inverse)
+- Simplifying Algebraic Expressions
+
+2. Equations and Inequalities
+-----------------------------
+- Solving Linear Equations
+- Solving and Graphing Linear Inequalities
+- Applications of Linear Equations and Inequalities (word problems)
+- Absolute Value Equations and Inequalities
+
+3. Functions and Graphing
+--------------------------
+- Understanding Functions and Relations
+- Function Notation
+- Graphing Linear Functions and Lines
+- Slope and Rate of Change
+- Slope-Intercept Form, Point-Slope Form, Standard Form
+- Graphing Inequalities on a Number Line and Coordinate Plane
+
+4. Systems of Equations and Inequalities
+----------------------------------------
+- Solving Systems by Graphing
+- Solving Systems by Substitution
+- Solving Systems by Elimination
+- Applications of Systems of Equations
+- Systems of Inequalities and their Graphs
+
+5. Polynomials
+--------------
+- Adding, Subtracting, Multiplying Polynomials
+- Special Products (Square of a Binomial, Difference of Squares)
+- Factoring Polynomials (GCF, trinomials, grouping)
+- Solving Quadratic Equations by Factoring
+
+6. Quadratic Functions and Equations
+------------------------------------
+- Introduction to Quadratic Functions
+- Graphing Quadratic Functions (parabolas)
+- Vertex, Axis of Symmetry, and Intercepts
+- Solving Quadratic Equations (factoring, completing the square)
+- The Quadratic Formula and Discriminant
+
+7. Rational Expressions and Equations
+--------------------------------------
+- Simplifying Rational Expressions
+- Multiplying and Dividing Rational Expressions
+- Adding and Subtracting Rational Expressions
+- Solving Rational Equations
+- Applications involving Rational Expressions
+
+8. Radicals and Square Roots
+-----------------------------
+- Simplifying Radicals
+- Operations with Radical Expressions
+- Solving Equations with Radicals
+
+9. Exponents and Exponential Functions
+--------------------------------------
+- Laws of Exponents
+- Scientific Notation
+- Exponential Growth and Decay
+
+10. Sequences and Patterns
+---------------------------
+- Arithmetic Sequences
+- Geometric Sequences
+
+11. Data Analysis and Probability (sometimes included)
+------------------------------------------------------
+- Mean, Median, Mode
+- Basic Probability
