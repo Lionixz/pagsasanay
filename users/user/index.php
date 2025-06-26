@@ -4,106 +4,6 @@
 <?php include('includes/head.php'); ?> <!-- Include head.php -->
 
 
-<style>
-    .card {
-        display: none;
-        background-color: #27293d;
-        border: 1px solid #3a3a4d;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 12px;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-    }
-
-    .card.active {
-        display: block;
-    }
-
-    .navigation {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .navigation button {
-        padding: 10px 25px;
-        border: none;
-        border-radius: 8px;
-        background-color: #5e63ff;
-        color: #fff;
-        font-weight: 500;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background 0.2s ease-in-out;
-    }
-
-    .navigation button:hover {
-        background-color: #4a4ff7;
-    }
-
-    /* Hide native radio */
-    .custom-radio input[type="radio"] {
-        display: none;
-    }
-
-    /* Style the custom radio circle */
-    .custom-radio .radio-mark {
-        height: 18px;
-        width: 18px;
-        border-radius: 50%;
-        display: inline-block;
-        border: 2px solid #888;
-        margin-right: 10px;
-        vertical-align: middle;
-        position: relative;
-        transition: border-color 0.2s ease-in-out;
-    }
-
-    /* Selected state */
-    .custom-radio input[type="radio"]:checked+.radio-mark::after {
-        content: "";
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: 8px;
-        height: 8px;
-        background-color: #5e63ff;
-        border-radius: 50%;
-    }
-
-    /* Full custom radio layout */
-    .custom-radio {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        transition: color 0.2s ease-in-out;
-    }
-
-    .custom-radio:hover .radio-mark {
-        border-color: #5e63ff;
-    }
-
-    .custom-radio:hover {
-        color: #5e63ff;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-        .navigation {
-            flex-direction: row;
-            gap: 0;
-        }
-
-        .navigation button {
-            width: 48%;
-        }
-    }
-</style>
 
 <body>
     <?php include('includes/sidebar.php'); ?> <!-- Include sidebar.php for the sidebar -->
@@ -135,7 +35,7 @@
             $questions = array_slice($questions, 0, $variable); // Final cut
             ?>
 
-            <form action="actions/submit_exam.php" method="post" id="quizForm">
+            <form action="actions/submit_verbal.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
                         <p><strong>Q<?= $index + 1 ?>:</strong> <?= htmlspecialchars($q['question']) ?></p>
