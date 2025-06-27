@@ -1,9 +1,10 @@
 <?php
+session_start();
+session_regenerate_id();
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mysqli = require __DIR__ . "/../config/database.php";
-
     $email = $_POST["email"] ?? '';
     $password = $_POST["password"] ?? '';
 
@@ -26,9 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Incorrect password");
     }
 
-    session_start();
-    session_regenerate_id();
     $_SESSION["user_id"] = $user["id"];
+    $currentSessionId = session_id();
+
+    // Store the current session ID in the database
+    $sql = "UPDATE user SET session_token = ? WHERE id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("si", $currentSessionId, $user["id"]);
+    $stmt->execute();
 
     if ($user["role"] === "admin") {
         header("Location: ../admin/index.php");
@@ -39,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -47,10 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" href="../images/fav.png" type="image/png">
-
-
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">

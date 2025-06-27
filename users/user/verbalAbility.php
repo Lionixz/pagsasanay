@@ -6,7 +6,6 @@ include('includes/head.php');
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
-
 <body>
     <?php include('includes/sidebar.php'); ?> <!-- Include sidebar.php for the sidebar -->
     <main>
@@ -15,16 +14,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php
             // verbal ability
             $conn = require_once __DIR__ . '/config/database.php';
-            $variable = 10; // Limit
+            $variable = 3; // Limit
             
-
             $sql = "
-    SELECT *
-    FROM (
-        SELECT *,
-            ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) AS rn_type,
-            ROW_NUMBER() OVER (PARTITION BY word ORDER BY RAND()) AS rn_word
-        FROM (
+            SELECT *
+            FROM (
+                SELECT *,
+                    ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) as rn
+                FROM (
             SELECT *, '1_antonym' AS source_table FROM `1_antonym`
             UNION ALL
             SELECT *, '1_causality_or_result_identification' AS source_table FROM `1_causality_or_result_identification`
@@ -45,15 +42,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             UNION ALL
             SELECT *, '1_word_precision' AS source_table FROM `1_word_precision`
         ) AS all_questions
-    ) AS filtered
-    WHERE rn_type = 1 AND rn_word = 1
+    ) AS numbered
+    WHERE rn = 1
     ORDER BY RAND()
-    LIMIT $variable
-";
-
-
-
-
+    LIMIT $variable";
 
 
             $result = $conn->query($sql);
@@ -78,12 +70,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <form action="actions/submit_verbal.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
-
-
                         <p><strong></strong> <?= htmlspecialchars($q['type']) ?></p>
-
-
-
                         <p><strong>Q<?= $index + 1 ?>:</strong> <?= htmlspecialchars($q['question']) ?></p>
                         <div class="radio-group">
                             <?php foreach ($q['shuffled_choices'] as $choice): ?>
@@ -111,8 +98,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <button type="submit" id="submitBtn" hidden aria-hidden="true" tabindex="-1"></button>
                 </div>
             </form>
-
-
 
             <script>
                 const cards = document.querySelectorAll('.card');
