@@ -30,6 +30,10 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 
 <head>
     <meta charset="UTF-8">
+
+    <link rel="icon" href="../images/fav.png" type="image/png">
+
+
     <title>Reset Password</title>
 </head>
 

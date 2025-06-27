@@ -102,11 +102,10 @@ $stmt->execute();
 
     <div class="container">
         <h1>Account Activated</h1>
-        <p>Your account has been successfully activated. You can now <a href="../auth/login.php">log in</a>.</p>
-        <a href="../auth/login.php">
-            <button class="btn">Go to Login</button>
-        </a>
+        <p>Your account has been successfully activated. You can now </p>
+        <a href="../auth/login.php" class="btn">Go to Login</a>
     </div>
+
 
 </body>
 

@@ -1,4 +1,4 @@
-INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_pronunciation_challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Pronunciation Challenge', 'How do you pronounce the word "abolish"?', 'uh-BOL-ish', 'a-BOL-ish', 'AB-uh-lish', 'a-BO-lish', 'The correct pronunciation is "uh-BOL-ish", where the stress is on the second syllable.'),
 ( 'abortion', 'Pronunciation Challenge', 'How do you pronounce the word "abortion"?', 'uh-BOR-shun', 'A-BOR-shun', 'AB-or-shun', 'uh-BOR-shin', 'The correct pronunciation is "uh-BOR-shun", with the stress on the second syllable.'),
 ( 'absence', 'Pronunciation Challenge', 'How do you pronounce the word "absence"?', 'AB-senss', 'AB-sent', 'ab-SENT', 'ab-SINSE', 'The correct pronunciation is "AB-senss", with the stress on the first syllable.'),
@@ -20,7 +20,7 @@ INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_a
 ( 'acid', 'Pronunciation Challenge', 'How do you pronounce the word "acid"?', 'A-sid', 'A-sid', 'A-sade', 'Ac-ide', 'The correct pronunciation is "A-sid", with one syllable.'),
 ( 'acquisition', 'Pronunciation Challenge', 'How do you pronounce the word "acquisition"?', 'ak-wih-ZIH-shun', 'ak-wih-SHUN', 'ak-WIH-zuh-shun', 'ak-WIH-zee-shun', 'The correct pronunciation is "ak-wih-ZIH-shun", with the stress on the third syllable.');
 
-INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_pronunciation_challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'activation', 'Pronunciation Challenge', 'How do you pronounce the word "activation"?', 'ak-tuh-VAY-shun', 'ak-tuh-VEE-shun', 'ak-tuh-VAY-tion', 'ak-TIV-ation', 'The correct pronunciation is "ak-tuh-VAY-shun", with the stress on the third syllable.'),
 ( 'activist', 'Pronunciation Challenge', 'How do you pronounce the word "activist"?', 'AK-tiv-ist', 'ak-TIV-ist', 'ak-TI-vest', 'AK-ti-vist', 'The correct pronunciation is "AK-tiv-ist", with the stress on the first syllable.'),
 ( 'acute', 'Pronunciation Challenge', 'How do you pronounce the word "acute"?', 'uh-KYOOT', 'AK-yoot', 'uh-KUTE', 'AH-kute', 'The correct pronunciation is "uh-KYOOT", with the stress on the second syllable.'),
@@ -43,7 +43,7 @@ INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_a
 ( 'agricultural', 'Pronunciation Challenge', 'How do you pronounce the word "agricultural"?', 'ag-ri-KUL-chur-al', 'ag-ri-KUL-tral', 'ag-ri-CUL-tural', 'ag-ri-KUL-tur-al', 'The correct pronunciation is "ag-ri-KUL-chur-al", with the stress on the second syllable.'),
 ( 'aide', 'Pronunciation Challenge', 'How do you pronounce the word "aide"?', 'AID', 'AYD', 'A-IDE', 'A-ED', 'The correct pronunciation is "AID", with one syllable, meaning a helper or assistant.');
 
-INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_pronunciation_challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'alert', 'Pronunciation Challenge', 'How do you pronounce the word "alert"?', 'uh-LURT', 'ah-LURT', 'uh-ALERT', 'uh-LIRT', 'The correct pronunciation is "uh-LURT", with the stress on the second syllable.'),
 ( 'align', 'Pronunciation Challenge', 'How do you pronounce the word "align"?', 'uh-LINE', 'uh-LING', 'a-LIGN', 'a-LINE', 'The correct pronunciation is "uh-LINE", with the stress on the second syllable.'),
 ( 'alignment', 'Pronunciation Challenge', 'How do you pronounce the word "alignment"?', 'uh-LINE-ment', 'uh-LIG-ment', 'a-LINE-ment', 'a-LIG-ment', 'The correct pronunciation is "uh-LINE-ment", with the stress on the second syllable.'),
@@ -66,7 +66,7 @@ INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_a
 ( 'anchor', 'Pronunciation Challenge', 'How do you pronounce the word "anchor"?', 'AN-kur', 'an-KOR', 'an-KUR', 'ANG-KOR', 'The correct pronunciation is "AN-kur", with the stress on the first syllable.'),
 ( 'angel', 'Pronunciation Challenge', 'How do you pronounce the word "angel"?', 'AN-jul', 'AN-jell', 'AN-ge-l', 'AN-ge-l', 'The correct pronunciation is "AN-jul", with the stress on the first syllable.');
 
-INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_pronunciation_challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'anonymous', 'Pronunciation Challenge', 'How do you pronounce the word "anonymous"?', 'uh-NON-uh-muhs', 'uh-NON-uh-muss', 'uh-NO-nuh-muss', 'a-NON-uh-muss', 'The correct pronunciation is "uh-NON-uh-muhs", with the stress on the second syllable.'),
 ( 'apparatus', 'Pronunciation Challenge', 'How do you pronounce the word "apparatus"?', 'ap-uh-RAT-uhs', 'ap-uh-RAY-tus', 'ap-uh-RAT-us', 'ap-a-RAH-tus', 'The correct pronunciation is "ap-uh-RAT-uhs", with the stress on the second syllable.'),
 ( 'apparel', 'Pronunciation Challenge', 'How do you pronounce the word "apparel"?', 'uh-PAR-uhl', 'uh-PAR-uhl', 'uh-PAIR-uhl', 'uh-PER-uhl', 'The correct pronunciation is "uh-PAR-uhl", with the stress on the second syllable.'),
@@ -88,7 +88,7 @@ INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_a
 ( 'aspire', 'Pronunciation Challenge', 'How do you pronounce the word "aspire"?', 'as-PIRE', 'as-PIR', 'as-PYR', 'as-PEER', 'The correct pronunciation is "as-PIRE", with one syllable stressed.'),
 ( 'assassination', 'Pronunciation Challenge', 'How do you pronounce the word "assassination"?', 'uh-sass-uh-NAY-shun', 'uh-sass-i-NAY-shun', 'uh-SASS-i-NAY-shun', 'uh-sass-AH-shun', 'The correct pronunciation is "uh-sass-uh-NAY-shun", with the stress on the third syllable.');
 
-INSERT INTO `2_Pronunciation_Challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_pronunciation_challenge` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'assault', 'Pronunciation Challenge', 'How do you pronounce the word "assault"?', 'uh-SAULT', 'as-SAULT', 'ah-SAULT', 'as-SULT', 'The correct pronunciation is "uh-SAULT", with the stress on the second syllable.'),
 ( 'assemble', 'Pronunciation Challenge', 'How do you pronounce the word "assemble"?', 'uh-SEM-buhl', 'uh-SEM-bul', 'a-SEM-bul', 'uh-SEM-bell', 'The correct pronunciation is "uh-SEM-buhl", with the stress on the second syllable.'),
 ( 'assembly', 'Pronunciation Challenge', 'How do you pronounce the word "assembly"?', 'uh-SEM-blee', 'uh-SEM-buh-lee', 'ah-SEM-buh-lee', 'uh-SEM-bul-lee', 'The correct pronunciation is "uh-SEM-blee", with the stress on the second syllable.'),

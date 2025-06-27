@@ -90,16 +90,39 @@ $userId = $_SESSION['user_id'];
 
             $score = 0;
             $total = 0;
-            $submittedAnswers = $_POST['answers'] ?? [];
 
-            if (empty($submittedAnswers)) {
+            $submittedQuestions = $_POST['questions'] ?? [];
+
+            if (empty($submittedQuestions)) {
                 die("No answers submitted.");
             }
 
             $results = [];
 
-            foreach ($submittedAnswers as $questionId => $userAnswer) {
-                $stmt = $conn->prepare("SELECT question, correct_answer, explanation FROM verbalability WHERE id = ?");
+            $allowedTables = [
+                '1_antonym',
+                '1_causality_or_result_identification',
+                '1_contextual_meaning',
+                '1_definition',
+                '1_field_specific_meaning',
+                '1_literal_vs_figurative_language',
+                '1_metaphor_simile_identification',
+                '1_slang_vs_formal_use',
+                '1_synonym',
+                '1_word_precision'
+            ];
+
+            foreach ($submittedQuestions as $q) {
+                $questionId = (int) $q['id'];
+                $tableName = $conn->real_escape_string($q['table']);
+                $userAnswer = $q['answer'];
+
+                // Security check to avoid SQL injection
+                if (!in_array($tableName, $allowedTables)) {
+                    continue;
+                }
+
+                $stmt = $conn->prepare("SELECT question, correct_answer, explanation FROM `$tableName` WHERE id = ?");
                 $stmt->bind_param("i", $questionId);
                 $stmt->execute();
                 $stmt->bind_result($question, $correctAnswer, $explanation);
@@ -107,11 +130,13 @@ $userId = $_SESSION['user_id'];
                 if ($stmt->fetch()) {
                     $total++;
                     $isCorrect = ($userAnswer === $correctAnswer);
-                    if ($isCorrect)
+                    if ($isCorrect) {
                         $score++;
+                    }
 
                     $results[] = [
                         'questionId' => $questionId,
+                        'table' => $tableName,
                         'question' => $question,
                         'correct' => $isCorrect,
                         'correctAnswer' => $correctAnswer,
@@ -125,9 +150,9 @@ $userId = $_SESSION['user_id'];
 
             $wrongAnswers = array_filter($results, fn($r) => !$r['correct']);
             $correctAnswers = array_filter($results, fn($r) => $r['correct']);
-
             $percentage = $total > 0 ? round(($score / $total) * 100, 2) : 0;
             ?>
+
 
             <h2>Exam Results</h2>
             <p>Score: <?= $score ?> / <?= $total ?> (<?= $percentage ?>%)</p>

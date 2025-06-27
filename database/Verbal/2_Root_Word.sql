@@ -1,4 +1,4 @@
-INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_root_word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Root Word', 'What is the root word of "abolish"?', 'abol', 'al', 'bish', 'ish', 'The root word of "abolish" is "abol," which comes from Latin meaning "to do away with."'),
 ( 'abortion', 'Root Word', 'What is the root word of "abortion"?', 'abort', 'ab', 'tion', 'ort', 'The root word of "abortion" is "abort," which comes from the Latin word "abortus," meaning "to miscarry or fail."'),
 ( 'absence', 'Root Word', 'What is the root word of "absence"?', 'absent', 'abs', 'ence', 'absentia', 'The root word of "absence" is "absent," which comes from Latin, meaning "not present."'),
@@ -23,7 +23,7 @@ INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'activist', 'Root Word', 'What is the root word of "activist"?', 'active', 'ist', 'act', 'vis', 'The root word of "activist" is "active," which comes from Latin meaning "to act or take action."'),
 ( 'acute', 'Root Word', 'What is the root word of "acute"?', 'acu', 'cute', 'acute', 'acut', 'The root word of "acute" is "acu," which comes from Latin meaning "sharp or pointed."');
 
-INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_root_word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'adaptation', 'Root Word', 'What is the root word of "adaptation"?', 'adapt', 'adap', 'adapted', 'ation', 'The root word of "adaptation" is "adapt," which comes from Latin meaning "to adjust or modify."'),
 ( 'adhere', 'Root Word', 'What is the root word of "adhere"?', 'her', 'ad', 'here', 'adhere', 'The root word of "adhere" is "her," which comes from Latin meaning "to stick or cling."'),
 ( 'adjacent', 'Root Word', 'What is the root word of "adjacent"?', 'jacere', 'ad', 'cent', 'jacent', 'The root word of "adjacent" is "jacere," which comes from Latin meaning "to lie or rest."'),
@@ -45,7 +45,7 @@ INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'alert', 'Root Word', 'What is the root word of "alert"?', 'al', 'ert', 'all', 'er', 'The root word of "alert" is "al," which comes from Latin meaning "to warn or bring attention."'),
 ( 'align', 'Root Word', 'What is the root word of "align"?', 'line', 'align', 'al', 'ign', 'The root word of "align" is "line," which comes from Latin meaning "a straight or extended mark."');
 
-INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_root_word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'alignment', 'Root Word', 'What is the root word of "alignment"?', 'align', 'ment', 'line', 'al', 'The root word of "alignment" is "align," which comes from Latin meaning "to place in a straight line or proper order."'),
 ( 'alike', 'Root Word', 'What is the root word of "alike"?', 'like', 'al', 'ilk', 'likea', 'The root word of "alike" is "like," which comes from Old English meaning "similar or comparable."'),
 ( 'allegation', 'Root Word', 'What is the root word of "allegation"?', 'allege', 'ation', 'al', 'leg', 'The root word of "allegation" is "allege," which comes from Latin meaning "to assert or claim."'),
@@ -67,7 +67,7 @@ INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'angel', 'Root Word', 'What is the root word of "angel"?', 'angelos', 'angel', 'ang', 'el', 'The root word of "angel" is "angelos," which comes from Greek meaning "messenger."'),
 ( 'anonymous', 'Root Word', 'What is the root word of "anonymous"?', 'onym', 'an', 'nym', 'onymous', 'The root word of "anonymous" is "onym," which comes from Greek meaning "name."');
 
-INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_root_word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'apparatus', 'Root Word', 'What is the root word of "apparatus"?', 'appar', 'us', 'a', 'rat', 'The root word of "apparatus" is "appar," which comes from Latin meaning "to prepare or make ready."'),
 ( 'apparel', 'Root Word', 'What is the root word of "apparel"?', 'par', 'app', 'era', 'ral', 'The root word of "apparel" is "par," which comes from Latin meaning "to arrange or prepare."'),
 ( 'appealing', 'Root Word', 'What is the root word of "appealing"?', 'appeal', 'app', 'peal', 'aling', 'The root word of "appealing" is "appeal," which comes from Latin meaning "to request or call for."'),
@@ -90,7 +90,7 @@ INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'assault', 'Root Word', 'What is the root word of "assault"?', 'salt', 'as', 'sult', 'sal', 'The root word of "assault" is "salt," which comes from Latin meaning "to leap or jump."'),
 ( 'assemble', 'Root Word', 'What is the root word of "assemble"?', 'sembl', 'as', 'sem', 'semble', 'The root word of "assemble" is "sembl," which comes from Latin meaning "to gather or bring together."');
 
-INSERT INTO `2_Root_Word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_root_word` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'assembly', 'Root Word', 'What is the root word of "assembly"?', 'assemble', 'ment', 'sem', 'a', 'The root word of "assembly" is "assemble," which comes from Latin meaning "to gather or bring together."'),
 ( 'assert', 'Root Word', 'What is the root word of "assert"?', 'sert', 'assert', 'ser', 'ert', 'The root word of "assert" is "sert," which comes from Latin meaning "to join or connect."'),
 ( 'assertion', 'Root Word', 'What is the root word of "assertion"?', 'assert', 'tion', 'sert', 'serted', 'The root word of "assertion" is "assert," which comes from Latin meaning "to state or declare positively."'),

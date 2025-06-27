@@ -1,4 +1,5 @@
-INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_antonym` 
+( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Antonym', 'Which of the following is an antonym for "abolish"?', 'establish', 'eliminate', 'destroy', 'remove', 'An antonym for "abolish" is "establish", meaning to create or set something up.'),
 ( 'abortion', 'Antonym', 'Which of the following is an antonym for "abortion"?', 'birth', 'termination', 'miscarriage', 'expulsion', 'An antonym for "abortion" is "birth", meaning the act of bringing a baby into the world.'),
 ( 'absence', 'Antonym', 'Which of the following is an antonym for "absence"?', 'presence', 'lack', 'deficiency', 'unavailability', 'An antonym for "absence" is "presence", meaning the state of being present or existing.'),
@@ -20,7 +21,8 @@ INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'acid', 'Antonym', 'Which of the following is an antonym for "acid"?', 'alkaline', 'sour', 'sharp', 'bitter', 'An antonym for "acid" is "alkaline", meaning a substance with a pH greater than 7, typically opposite to acid.'),
 ( 'acquisition', 'Antonym', 'Which of the following is an antonym for "acquisition"?', 'loss', 'gain', 'purchase', 'attainment', 'An antonym for "acquisition" is "loss", meaning the act of losing or giving up something rather than obtaining it.');
 
-INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_antonym` 
+( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'activation', 'Antonym', 'Which of the following is an antonym for "activation"?', 'deactivation', 'initiation', 'triggering', 'engagement', 'An antonym for "activation" is "deactivation", meaning the process of making something inactive or nonfunctional.'),
 ( 'activist', 'Antonym', 'Which of the following is an antonym for "activist"?', 'apathetic', 'campaigner', 'supporter', 'advocate', 'An antonym for "activist" is "apathetic", meaning someone who shows little or no interest in political or social issues.'),
 ( 'acute', 'Antonym', 'Which of the following is an antonym for "acute"?', 'chronic', 'sharp', 'intense', 'severe', 'An antonym for "acute" is "chronic", meaning a condition or situation that persists over a long period of time.'),
@@ -41,7 +43,8 @@ INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'aftermath', 'Antonym', 'Which of the following is an antonym for "aftermath"?', 'cause', 'consequence', 'result', 'beginning', 'An antonym for "aftermath" is "cause", meaning the reason or origin of an event, as opposed to the effect that follows.'),
 ( 'aggression', 'Antonym', 'Which of the following is an antonym for "aggression"?', 'peace', 'hostility', 'violence', 'anger', 'An antonym for "aggression" is "peace", meaning the absence of conflict or hostility.');
 
-INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_antonym` 
+( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'agricultural', 'Antonym', 'Which of the following is an antonym for "agricultural"?', 'urban', 'rural', 'forestry', 'farming', 'An antonym for "agricultural" is "urban", meaning related to cities or towns, as opposed to farming or agriculture.'),
 ( 'aide', 'Antonym', 'Which of the following is an antonym for "aide"?', 'opponent', 'assistant', 'helper', 'supporter', 'An antonym for "aide" is "opponent", meaning someone who is in opposition to a cause or a person.'),
 ( 'alert', 'Antonym', 'Which of the following is an antonym for "alert"?', 'unaware', 'attentive', 'vigilant', 'focused', 'An antonym for "alert" is "unaware", meaning lacking awareness or attention to surroundings or events.'),
@@ -62,7 +65,7 @@ INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'amend', 'Antonym', 'Which of the following is an antonym for "amend"?', 'destroy', 'modify', 'correct', 'change', 'An antonym for "amend" is "destroy", meaning to completely ruin or put an end to something.'),
 ( 'amendment', 'Antonym', 'Which of the following is an antonym for "amendment"?', 'repeal', 'modification', 'correction', 'addition', 'An antonym for "amendment" is "repeal", meaning the act of reversing or canceling a law or regulation.');
 
-INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'amid', 'Antonym', 'Which of the following is an antonym for "amid"?', 'outside', 'among', 'within', 'inside', 'An antonym for "amid" is "outside", meaning being outside of or away from a particular place or situation.'),
 ( 'analogy', 'Antonym', 'Which of the following is an antonym for "analogy"?', 'difference', 'similarity', 'comparison', 'likeness', 'An antonym for "analogy" is "difference", meaning a dissimilarity or distinction between two things.'),
 ( 'anchor', 'Antonym', 'Which of the following is an antonym for "anchor"?', 'release', 'secure', 'fix', 'attach', 'An antonym for "anchor" is "release", meaning to free or allow something to move freely.'),
@@ -86,7 +89,7 @@ INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'ash', 'Antonym', 'Which of the following is an antonym for "ash"?', 'fire', 'residue', 'dust', 'char', 'An antonym for "ash" is "fire", meaning the burning substance that creates ash as a byproduct.'),
 ( 'aspiration', 'Antonym', 'Which of the following is an antonym for "aspiration"?', 'contentment', 'dream', 'goal', 'ambition', 'An antonym for "aspiration" is "contentment", meaning a state of being satisfied or at ease with one’s situation.');
 
-INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'aspire', 'Antonym', 'Which of the following is an antonym for "aspire"?', 'settle', 'strive', 'aim', 'pursue', 'An antonym for "aspire" is "settle", meaning to accept something less than what one hopes for or to stop striving for more.'),
 ( 'assassination', 'Antonym', 'Which of the following is an antonym for "assassination"?', 'salvation', 'murder', 'execution', 'attack', 'An antonym for "assassination" is "salvation", meaning the act of saving or protecting, especially from harm.'),
 ( 'assault', 'Antonym', 'Which of the following is an antonym for "assault"?', 'defense', 'attack', 'aggression', 'assault', 'An antonym for "assault" is "defense", meaning the act of protecting or defending oneself or others.'),
@@ -108,6 +111,6 @@ INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong
 ( 'autonomy', 'Antonym', 'Which of the following is an antonym for "autonomy"?', 'dependence', 'independence', 'freedom', 'self-governance', 'An antonym for "autonomy" is "dependence", meaning the state of relying on others for support or decisions.'),
 ( 'autumn', 'Antonym', 'Which of the following is an antonym for "autumn"?', 'spring', 'winter', 'summer', 'fall', 'An antonym for "autumn" is "spring", meaning the season between winter and summer, characterized by renewal and growth.');
 
-INSERT INTO `A-1-Antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_antonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'availability', 'Antonym', 'Which of the following is an antonym for "availability"?', 'unavailability', 'accessibility', 'presence', 'readiness', 'An antonym for "availability" is "unavailability", meaning the state of being unavailable or inaccessible.'),
 ( 'await', 'Antonym', 'Which of the following is an antonym for "await"?', 'ignore', 'wait', 'expect', 'anticipate', 'An antonym for "await" is "ignore", meaning to disregard or not pay attention to something.');

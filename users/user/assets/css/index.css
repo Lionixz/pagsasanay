@@ -53,13 +53,29 @@ body{
     font-weight: 600;
   }
 }
-#sidebar ul li.active a{
+/* #sidebar ul li.active a{
   color: var(--accent-clr);
 
   svg{
     fill: var(--accent-clr);
   }
+} */
+
+#sidebar ul li.active a,
+#sidebar ul li.active button,
+#sidebar ul li.active button span {
+  color: var(--accent-clr);
 }
+
+#sidebar ul li.active a svg,
+#sidebar ul li.active button svg {
+  fill: var(--accent-clr);
+}
+
+
+
+
+
 
 #sidebar a, #sidebar .dropdown-btn, #sidebar .logo{
   border-radius: .5em;

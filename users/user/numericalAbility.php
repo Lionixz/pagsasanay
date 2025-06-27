@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('includes/head.php'); ?> <!-- Include head.php -->
-
+<?php
+include('includes/head.php');
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
 
 <body>
     <?php include('includes/sidebar.php'); ?> <!-- Include sidebar.php for the sidebar -->

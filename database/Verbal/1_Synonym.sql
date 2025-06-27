@@ -1,4 +1,4 @@
-INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Synonym', 'Which of the following is a synonym for "abolish"?', 'eliminate', 'increase', 'modify', 'enhance', 'A synonym for "abolish" is "eliminate", meaning to formally put an end to something or remove it completely.'),
 ( 'abortion', 'Synonym', 'Which of the following is a synonym for "abortion"?', 'termination', 'birth', 'delivery', 'growth', 'A synonym for "abortion" is "termination", meaning the medical ending of a pregnancy.'),
 ( 'absence', 'Synonym', 'Which of the following is a synonym for "absence"?', 'lack', 'presence', 'participation', 'attendance', 'A synonym for "absence" is "lack", meaning the state of being absent or not present.'),
@@ -21,7 +21,7 @@ INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_a
 ( 'acquisition', 'Synonym', 'Which of the following is a synonym for "acquisition"?', 'purchase', 'sale', 'loss', 'return', 'A synonym for "acquisition" is "purchase", meaning the act of obtaining or acquiring something, especially in a business context.');
 
 
-INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'activation', 'Synonym', 'Which of the following is a synonym for "activation"?', 'initiation', 'deactivation', 'postponement', 'delay', 'A synonym for "activation" is "initiation", meaning the process of starting or setting something into motion.'),
 ( 'activist', 'Synonym', 'Which of the following is a synonym for "activist"?', 'campaigner', 'bystander', 'observer', 'spectator', 'A synonym for "activist" is "campaigner", meaning someone who works actively to promote or oppose a cause.'),
 ( 'acute', 'Synonym', 'Which of the following is a synonym for "acute"?', 'sharp', 'dull', 'blunt', 'mild', 'A synonym for "acute" is "sharp", meaning intense or severe, especially in terms of pain or other sensations.'),
@@ -44,7 +44,7 @@ INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_a
 ( 'agricultural', 'Synonym', 'Which of the following is a synonym for "agricultural"?', 'farming', 'urban', 'industrial', 'technological', 'A synonym for "agricultural" is "farming", meaning related to the cultivation of crops and raising of animals.'),
 ( 'aide', 'Synonym', 'Which of the following is a synonym for "aide"?', 'assistant', 'leader', 'worker', 'director', 'A synonym for "aide" is "assistant", meaning someone who helps or supports another person, often in a professional setting.');
 
-INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'alert', 'Synonym', 'Which of the following is a synonym for "alert"?', 'vigilant', 'careless', 'sleepy', 'inactive', 'A synonym for "alert" is "vigilant", meaning being watchful and quick to notice potential danger or problems.'),
 ( 'align', 'Synonym', 'Which of the following is a synonym for "align"?', 'arrange', 'scatter', 'confuse', 'misplace', 'A synonym for "align" is "arrange", meaning to position or place things in a specific order or alignment.'),
 ( 'alignment', 'Synonym', 'Which of the following is a synonym for "alignment"?', 'arrangement', 'disarray', 'disorder', 'confusion', 'A synonym for "alignment" is "arrangement", meaning the proper positioning or organization of items in a specific order.'),
@@ -65,7 +65,7 @@ INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_a
 ( 'amid', 'Synonym', 'Which of the following is a synonym for "amid"?', 'among', 'outside', 'before', 'after', 'A synonym for "amid" is "among", meaning surrounded by or in the middle of something.'),
 ( 'analogy', 'Synonym', 'Which of the following is a synonym for "analogy"?', 'comparison', 'contrast', 'difference', 'separation', 'A synonym for "analogy" is "comparison", meaning an assessment of two things to highlight their similarities and differences.');
 
-INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'anchor', 'Synonym', 'Which of the following is a synonym for "anchor"?', 'mooring', 'disembark', 'detach', 'release', 'A synonym for "anchor" is "mooring", meaning a device or place where a vessel is secured to prevent movement.'),
 ( 'angel', 'Synonym', 'Which of the following is a synonym for "angel"?', 'messenger', 'devil', 'enemy', 'demon', 'A synonym for "angel" is "messenger", meaning a spiritual being who conveys messages or serves as a helper.'),
 ( 'anonymous', 'Synonym', 'Which of the following is a synonym for "anonymous"?', 'unnamed', 'famous', 'known', 'identified', 'A synonym for "anonymous" is "unnamed", meaning not identified by name or lacking an identifiable author or source.'),
@@ -90,7 +90,7 @@ INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_a
 ( 'assassination', 'Synonym', 'Which of the following is a synonym for "assassination"?', 'murder', 'rescue', 'birth', 'healing', 'A synonym for "assassination" is "murder", meaning the deliberate killing of a prominent person, typically for political reasons.'),
 ( 'assault', 'Synonym', 'Which of the following is a synonym for "assault"?', 'attack', 'defend', 'protect', 'help', 'A synonym for "assault" is "attack", meaning to physically harm or attempt to harm someone with force.');
 
-INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `1_synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'assemble', 'Synonym', 'Which of the following is a synonym for "assemble"?', 'gather', 'scatter', 'disperse', 'separate', 'A synonym for "assemble" is "gather", meaning to bring people or things together into one place or group.'),
 ( 'assembly', 'Synonym', 'Which of the following is a synonym for "assembly"?', 'meeting', 'disband', 'separation', 'dispersal', 'A synonym for "assembly" is "meeting", meaning a group of people coming together for a particular purpose.'),
 ( 'assert', 'Synonym', 'Which of the following is a synonym for "assert"?', 'declare', 'deny', 'ignore', 'hide', 'A synonym for "assert" is "declare", meaning to state something with confidence or force.'),
@@ -109,5 +109,4 @@ INSERT INTO `1_Synonym` ( `word`, `type`, `question`, `correct_answer`, `wrong_a
 ( 'autonomy', 'Synonym', 'Which of the following is a synonym for "autonomy"?', 'independence', 'dependence', 'reliance', 'submission', 'A synonym for "autonomy" is "independence", meaning the ability to make decisions and act without being controlled by others.'),
 ( 'autumn', 'Synonym', 'Which of the following is a synonym for "autumn"?', 'fall', 'spring', 'summer', 'winter', 'A synonym for "autumn" is "fall", referring to the season between summer and winter, marked by falling leaves and cooler weather.'),
 ( 'availability', 'Synonym', 'Which of the following is a synonym for "availability"?', 'accessibility', 'scarcity', 'unavailability', 'exclusivity', 'A synonym for "availability" is "accessibility", meaning the state of being able to be used or reached easily.'),
-( 'await', 'Synonym', 'Which of the following is a synonym for "await"?', 'wait', 'hasten', 'rush', 'ignore', 'A synonym for "await" is "wait", meaning to remain in a state of readiness or expectation for something to happen.'); 
-
+( 'await', 'Synonym', 'Which of the following is a synonym for "await"?', 'wait', 'hasten', 'rush', 'ignore', 'A synonym for "await" is "wait", meaning to remain in a state of readiness or expectation for something to happen.');

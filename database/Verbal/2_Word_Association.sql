@@ -1,4 +1,4 @@
-INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_word_association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Word Association', 'Which word is most closely associated with "abolish"?', 'eliminate', 'create', 'ignore', 'prolong', 'The word "abolish" is most closely associated with "eliminate," meaning to put an end to something.' ),
 ( 'abortion', 'Word Association', 'Which word is most closely associated with "abortion"?', 'termination', 'birth', 'preservation', 'expansion', 'The word "abortion" is most closely associated with "termination," referring to the early end of a pregnancy.' ),
 ( 'absence', 'Word Association', 'Which word is most closely associated with "absence"?', 'missing', 'present', 'late', 'arrival', 'The word "absence" is most closely associated with "missing," indicating something or someone not present.' ),
@@ -21,7 +21,7 @@ INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`,
 ( 'activist', 'Word Association', 'Which word is most closely associated with "activist"?', 'protester', 'bystander', 'observer', 'supporter', 'The word "activist" is most closely associated with "protester," meaning someone who takes action to bring about social or political change.' ),
 ( 'acute', 'Word Association', 'Which word is most closely associated with "acute"?', 'sharp', 'dull', 'blunt', 'mild', 'The word "acute" is most closely associated with "sharp," meaning a high intensity or severity of something.' );
 
-INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_word_association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'adaptation', 'Word Association', 'Which word is most closely associated with "adaptation"?', 'adjustment', 'resistance', 'stagnation', 'refusal', 'The word "adaptation" is most closely associated with "adjustment," meaning the process of modifying oneself or something to fit new conditions.' ),
 ( 'adhere', 'Word Association', 'Which word is most closely associated with "adhere"?', 'stick', 'detach', 'resist', 'escape', 'The word "adhere" is most closely associated with "stick," meaning to attach firmly or remain attached.' ),
 ( 'adjacent', 'Word Association', 'Which word is most closely associated with "adjacent"?', 'near', 'distant', 'separate', 'isolated', 'The word "adjacent" is most closely associated with "near," meaning next to or adjoining something else.' ),
@@ -42,7 +42,7 @@ INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`,
 ( 'aide', 'Word Association', 'Which word is most closely associated with "aide"?', 'assistant', 'leader', 'supervisor', 'boss', 'The word "aide" is most closely associated with "assistant," meaning a person who helps or supports someone in their work or duties.' ),
 ( 'alert', 'Word Association', 'Which word is most closely associated with "alert"?', 'vigilant', 'unaware', 'sleepy', 'distracted', 'The word "alert" is most closely associated with "vigilant," meaning being watchful or attentive to potential danger or issues.' );
 
-INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_word_association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'align', 'Word Association', 'Which word is most closely associated with "align"?', 'arrange', 'scatter', 'move', 'ignore', 'The word "align" is most closely associated with "arrange," meaning to put things in a proper order or position.' ),
 ( 'alignment', 'Word Association', 'Which word is most closely associated with "alignment"?', 'positioning', 'confusion', 'separation', 'disorganization', 'The word "alignment" is most closely associated with "positioning," meaning the proper arrangement of parts or elements.' ),
 ( 'alike', 'Word Association', 'Which word is most closely associated with "alike"?', 'similar', 'different', 'opposite', 'unique', 'The word "alike" is most closely associated with "similar," meaning having qualities in common.' ),
@@ -64,7 +64,7 @@ INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`,
 ( 'anchor', 'Word Association', 'Which word is most closely associated with "anchor"?', 'mooring', 'drifting', 'floating', 'wandering', 'The word "anchor" is most closely associated with "mooring," meaning a device used to secure a ship or boat in one place.' ),
 ( 'angel', 'Word Association', 'Which word is most closely associated with "angel"?', 'heavenly', 'earthly', 'demonic', 'evil', 'The word "angel" is most closely associated with "heavenly," referring to a supernatural being believed to be a messenger of God.' );
 
-INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_word_association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'anonymous', 'Word Association', 'Which word is most closely associated with "anonymous"?', 'unknown', 'known', 'famous', 'celebrated', 'The word "anonymous" is most closely associated with "unknown," meaning without a known identity or name.' ),
 ( 'apparatus', 'Word Association', 'Which word is most closely associated with "apparatus"?', 'equipment', 'furniture', 'decoration', 'tool', 'The word "apparatus" is most closely associated with "equipment," meaning a set of tools or devices used for a specific purpose.' ),
 ( 'apparel', 'Word Association', 'Which word is most closely associated with "apparel"?', 'clothing', 'accessories', 'jewelry', 'footwear', 'The word "apparel" is most closely associated with "clothing," meaning garments worn to cover the body.' ),
@@ -86,7 +86,7 @@ INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`,
 ( 'aspire', 'Word Association', 'Which word is most closely associated with "aspire"?', 'strive', 'settle', 'avoid', 'resign', 'The word "aspire" is most closely associated with "strive," meaning to work hard toward achieving a goal or dream.' ),
 ( 'assassination', 'Word Association', 'Which word is most closely associated with "assassination"?', 'murder', 'recovery', 'survival', 'freedom', 'The word "assassination" is most closely associated with "murder," meaning the deliberate killing of a prominent person.' );
 
-INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_word_association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'assault', 'Word Association', 'Which word is most closely associated with "assault"?', 'attack', 'defense', 'protection', 'rescue', 'The word "assault" is most closely associated with "attack," meaning a violent or forceful action against someone.' ),
 ( 'assemble', 'Word Association', 'Which word is most closely associated with "assemble"?', 'gather', 'disperse', 'scatter', 'separate', 'The word "assemble" is most closely associated with "gather," meaning to bring together or collect in one place.' ),
 ( 'assembly', 'Word Association', 'Which word is most closely associated with "assembly"?', 'meeting', 'isolation', 'division', 'separation', 'The word "assembly" is most closely associated with "meeting," meaning a gathering of people for a common purpose or discussion.' ),
@@ -108,5 +108,5 @@ INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`,
 ( 'availability', 'Word Association', 'Which word is most closely associated with "availability"?', 'accessibility', 'scarcity', 'inaccessibility', 'unavailability', 'The word "availability" is most closely associated with "accessibility," meaning the quality of being available or accessible.' );
 
 
-INSERT INTO `2_Word_Association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_word_association` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'await', 'Word Association', 'Which word is most closely associated with "await"?', 'wait', 'arrive', 'leave', 'move', 'The word "await" is most closely associated with "wait," meaning to stay in one place or remain inactive until something happens.' ),
