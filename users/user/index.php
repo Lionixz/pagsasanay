@@ -81,7 +81,7 @@ include('includes/head.php');
                                 <label class="custom-radio">
                                     <input type="radio" name="questions[<?= $index ?>][answer]"
                                         value="<?= htmlspecialchars($choice) ?>" required>
-                                    <span class="radio-mark"></span>
+                                    <!-- <span class="radio-mark"></span> -->
                                     <?= htmlspecialchars($choice) ?>
                                 </label>
 

@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $user = null;
 
 if (isset($_SESSION["user_id"])) {

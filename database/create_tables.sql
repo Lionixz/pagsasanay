@@ -26,7 +26,6 @@ CREATE TABLE `user` (
 1_synonym
 1_word_precision
 
-
 2_affix_identification
 2_pronunciation_challenge
 2_root_word
@@ -35,6 +34,22 @@ CREATE TABLE `user` (
 2_word_family
 2_word_formation
 2_word_stress_identification
+
+3_adjective_form
+3_adverb_form
+3_causative_form
+3_conditional_sentence_identification
+3_correct_comparative_form
+3_correct_superlative_form
+3_noun_form
+3_part_of_speech
+3_plural_form
+3_pronoun_case
+3_subject_verb_agreement
+3_tense_form
+3_verb_form
+3_voice
+
 
 
 -- 1_ tables
@@ -62,19 +77,7 @@ CREATE TABLE `1_synonym` LIKE `1_antonym`;
 CREATE TABLE `1_word_precision` LIKE `1_antonym`;
 
 -- 2_ tables
-CREATE TABLE `2_affix_identification` (
-  `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `word` VARCHAR(100) NOT NULL,
-  `type` VARCHAR(50) NOT NULL,
-  `question` TEXT NOT NULL,
-  `correct_answer` VARCHAR(255) NOT NULL,
-  `wrong_answer1` VARCHAR(255) NOT NULL,
-  `wrong_answer2` VARCHAR(255) NOT NULL,
-  `wrong_answer3` VARCHAR(255) NOT NULL,
-  `explanation` TEXT NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+CREATE TABLE `2_affix_identification` LIKE `1_antonym`;
 CREATE TABLE `2_pronunciation_challenge` LIKE `2_affix_identification`;
 CREATE TABLE `2_root_word` LIKE `2_affix_identification`;
 CREATE TABLE `2_word_association` LIKE `2_affix_identification`;
@@ -82,3 +85,20 @@ CREATE TABLE `2_word_classification` LIKE `2_affix_identification`;
 CREATE TABLE `2_word_family` LIKE `2_affix_identification`;
 CREATE TABLE `2_word_formation` LIKE `2_affix_identification`;
 CREATE TABLE `2_word_stress_identification` LIKE `2_affix_identification`;
+
+-- 3_ tables
+CREATE TABLE `3_adjective_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_adverb_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_causative_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_conditional_sentence_identification` LIKE `2_affix_identification`;
+CREATE TABLE `3_correct_comparative_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_correct_superlative_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_noun_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_part_of_speech` LIKE `2_affix_identification`;
+CREATE TABLE `3_plural_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_pronoun_case` LIKE `2_affix_identification`;
+CREATE TABLE `3_subject_verb_agreement` LIKE `2_affix_identification`;
+CREATE TABLE `3_tense_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_verb_form` LIKE `2_affix_identification`;
+CREATE TABLE `3_voice` LIKE `2_affix_identification`;
+
