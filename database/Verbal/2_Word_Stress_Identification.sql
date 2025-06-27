@@ -1,4 +1,4 @@
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Stress_Identification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Word Stress Identification', 'Where is the stress in the word "abolish"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "abolish" is on the second syllable: a-BOL-ish.' ),
 ( 'abortion', 'Word Stress Identification', 'Where is the stress in the word "abortion"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "abortion" is on the second syllable: ab-OR-tion.' ),
 ( 'absence', 'Word Stress Identification', 'Where is the stress in the word "absence"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "absence" is on the first syllable: AB-sence.' ),
@@ -18,7 +18,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'accusation', 'Word Stress Identification', 'Where is the stress in the word "accusation"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "accusation" is on the second syllable: ac-cu-SA-tion.' ),
 ( 'accused', 'Word Stress Identification', 'Where is the stress in the word "accused"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "accused" is on the second syllable: ac-CUSED.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Stress_Identification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'acid', 'Word Stress Identification', 'Where is the stress in the word "acid"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "acid" is on the first syllable: AC-id.' ),
 ( 'acquisition', 'Word Stress Identification', 'Where is the stress in the word "acquisition"?', 'fourth syllable', 'first syllable', 'second syllable', 'third syllable', 'The stress in the word "acquisition" is on the fourth syllable: ac-cu-mu-LA-tion.' ),
 ( 'activation', 'Word Stress Identification', 'Where is the stress in the word "activation"?', 'third syllable', 'first syllable', 'second syllable', 'fourth syllable', 'The stress in the word "activation" is on the third syllable: ac-ti-VA-tion.' ),
@@ -37,7 +37,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'adverse', 'Word Stress Identification', 'Where is the stress in the word "adverse"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "adverse" is on the first syllable: AD-verse.' ),
 ( 'advocate', 'Word Stress Identification', 'Where is the stress in the word "advocate"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "advocate" is on the first syllable: AD-vo-cate.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Stress_Identification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'aesthetic', 'Word Stress Identification', 'Where is the stress in the word "aesthetic"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "aesthetic" is on the second syllable: aes-THET-ic.' ),
 ( 'affection', 'Word Stress Identification', 'Where is the stress in the word "affection"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "affection" is on the second syllable: af-FEC-tion.' ),
 ( 'aftermath', 'Word Stress Identification', 'Where is the stress in the word "aftermath"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "aftermath" is on the first syllable: AF-ter-math.' ),
@@ -57,7 +57,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'allowance', 'Word Stress Identification', 'Where is the stress in the word "allowance"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "allowance" is on the second syllable: al-LOW-ance.' ),
 ( 'ally', 'Word Stress Identification', 'Where is the stress in the word "ally"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "ally" is on the first syllable: AL-ly.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Stress_Identification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'aluminium', 'Word Stress Identification', 'Where is the stress in the word "aluminium"?', 'third syllable', 'first syllable', 'second syllable', 'fourth syllable', 'The stress in the word "aluminium" is on the third syllable: al-u-MIN-i-um.' ),
 ( 'amateur', 'Word Stress Identification', 'Where is the stress in the word "amateur"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "amateur" is on the first syllable: AM-a-teur.' ),
 ( 'ambassador', 'Word Stress Identification', 'Where is the stress in the word "ambassador"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "ambassador" is on the second syllable: am-BASS-a-dor.' ),
@@ -76,7 +76,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'applicable', 'Word Stress Identification', 'Where is the stress in the word "applicable"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "applicable" is on the second syllable: ap-PLIC-a-ble.' ),
 ( 'appoint', 'Word Stress Identification', 'Where is the stress in the word "appoint"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "appoint" is on the first syllable: AP-point.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Stress_Identification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'appreciation', 'Word Stress Identification', 'Where is the stress in the word "appreciation"?', 'third syllable', 'first syllable', 'second syllable', 'fourth syllable', 'The stress in the word "appreciation" is on the third syllable: ap-pre-ci-A-tion.' ),
 ( 'arbitrary', 'Word Stress Identification', 'Where is the stress in the word "arbitrary"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "arbitrary" is on the first syllable: AR-bi-trary.' ),
 ( 'architectural', 'Word Stress Identification', 'Where is the stress in the word "architectural"?', 'third syllable', 'first syllable', 'second syllable', 'fourth syllable', 'The stress in the word "architectural" is on the third syllable: ar-chi-TEC-tur-al.' ),
@@ -94,7 +94,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'assembly', 'Word Stress Identification', 'Where is the stress in the word "assembly"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "assembly" is on the second syllable: as-SEM-bly.' ),
 ( 'assert', 'Word Stress Identification', 'Where is the stress in the word "assert"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "assert" is on the second syllable: as-SERT.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Stress_Identification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'assertion', 'Word Stress Identification', 'Where is the stress in the word "assertion"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "assertion" is on the second syllable: as-SER-tion.' ),
 ( 'assurance', 'Word Stress Identification', 'Where is the stress in the word "assurance"?', 'second syllable', 'first syllable', 'third syllable', 'fourth syllable', 'The stress in the word "assurance" is on the second syllable: as-SUR-ance.' ),
 ( 'asylum', 'Word Stress Identification', 'Where is the stress in the word "asylum"?', 'first syllable', 'second syllable', 'third syllable', 'fourth syllable', 'The stress in the word "asylum" is on the first syllable: A-sylum.' ),

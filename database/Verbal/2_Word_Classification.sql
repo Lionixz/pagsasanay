@@ -1,4 +1,4 @@
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Classification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'abolish', 'Word Classification', 'Which category does the word "abolish" belong to?', 'verb', 'adjective', 'noun', 'adverb', 'The word "abolish" is a verb, meaning to formally put an end to a system or practice.' ),
 ( 'abortion', 'Word Classification', 'Which category does the word "abortion" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "abortion" is a noun, referring to the termination of a pregnancy.' ),
 ( 'absence', 'Word Classification', 'Which category does the word "absence" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "absence" is a noun, meaning the state of being absent or not present.' ),
@@ -20,7 +20,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'acid', 'Word Classification', 'Which category does the word "acid" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "acid" is a noun, referring to a substance with a sour taste and the ability to react with bases.' ),
 ( 'acquisition', 'Word Classification', 'Which category does the word "acquisition" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "acquisition" is a noun, referring to the act of obtaining something, particularly in a business context.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Classification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'activation', 'Word Classification', 'Which category does the word "activation" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "activation" is a noun, referring to the process of making something active or operational.' ),
 ( 'activist', 'Word Classification', 'Which category does the word "activist" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "activist" is a noun, referring to a person who actively supports or engages in political or social causes.' ),
 ( 'acute', 'Word Classification', 'Which category does the word "acute" belong to?', 'adjective', 'noun', 'verb', 'adverb', 'The word "acute" is an adjective, describing something that is sharp, intense, or severe.' ),
@@ -41,7 +41,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'aftermath', 'Word Classification', 'Which category does the word "aftermath" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "aftermath" is a noun, referring to the consequences or results following an event, often something unpleasant.' ),
 ( 'aggression', 'Word Classification', 'Which category does the word "aggression" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "aggression" is a noun, meaning hostile or violent behavior toward others.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Classification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'agricultural', 'Word Classification', 'Which category does the word "agricultural" belong to?', 'adjective', 'noun', 'verb', 'adverb', 'The word "agricultural" is an adjective, referring to anything related to farming or agriculture.' ),
 ( 'aide', 'Word Classification', 'Which category does the word "aide" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "aide" is a noun, meaning a person who helps or assists another.' ),
 ( 'alert', 'Word Classification', 'Which category does the word "alert" belong to?', 'adjective', 'noun', 'verb', 'adverb', 'The word "alert" is an adjective, meaning quick to notice or respond to situations.' ),
@@ -62,7 +62,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'amend', 'Word Classification', 'Which category does the word "amend" belong to?', 'verb', 'noun', 'adjective', 'adverb', 'The word "amend" is a verb, meaning to make changes to improve or correct something.' ),
 ( 'amendment', 'Word Classification', 'Which category does the word "amendment" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "amendment" is a noun, referring to a formal change or addition made to a document or law.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Classification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'amid', 'Word Classification', 'Which category does the word "amid" belong to?', 'preposition', 'noun', 'verb', 'adjective', 'The word "amid" is a preposition, meaning in the middle of or surrounded by.' ),
 ( 'analogy', 'Word Classification', 'Which category does the word "analogy" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "analogy" is a noun, referring to a comparison between two things to highlight similarities.' ),
 ( 'anchor', 'Word Classification', 'Which category does the word "anchor" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "anchor" is a noun, referring to a device used to moor a ship or secure something in place.' ),
@@ -84,7 +84,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'array', 'Word Classification', 'Which category does the word "array" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "array" is a noun, referring to an ordered arrangement or display of items.' );
 
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Classification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'articulate', 'Word Classification', 'Which category does the word "articulate" belong to?', 'verb', 'noun', 'adjective', 'adverb', 'The word "articulate" is a verb, meaning to express or explain clearly.' ),
 ( 'ash', 'Word Classification', 'Which category does the word "ash" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "ash" is a noun, referring to the fine, powdery residue left after the combustion of a substance.' ),
 ( 'aspiration', 'Word Classification', 'Which category does the word "aspiration" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "aspiration" is a noun, meaning a strong desire to achieve something or reach a goal.' ),
@@ -105,7 +105,7 @@ INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wro
 ( 'audit', 'Word Classification', 'Which category does the word "audit" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "audit" can be a noun (referring to an official inspection) or a verb (meaning to conduct an official examination of accounts or records).' ),
 ( 'authentic', 'Word Classification', 'Which category does the word "authentic" belong to?', 'adjective', 'noun', 'verb', 'adverb', 'The word "authentic" is an adjective, meaning genuine, real, or not false.' );
 
-INSERT INTO `verbalability` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
+INSERT INTO `2_Word_Classification` ( `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 ( 'authorise', 'Word Classification', 'Which category does the word "authorise" belong to?', 'verb', 'noun', 'adjective', 'adverb', 'The word "authorise" is a verb, meaning to give official permission or approval for something.' ),
 ( 'auto', 'Word Classification', 'Which category does the word "auto" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "auto" is a noun, referring to a self-propelled vehicle, commonly known as a car.' ),
 ( 'autonomy', 'Word Classification', 'Which category does the word "autonomy" belong to?', 'noun', 'verb', 'adjective', 'adverb', 'The word "autonomy" is a noun, meaning the state of being independent or self-governing.' ),
