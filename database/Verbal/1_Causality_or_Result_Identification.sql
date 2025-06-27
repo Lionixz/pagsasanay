@@ -1,48 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 27, 2025 at 09:06 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `x`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `1_causality_or_result_identification`
---
-
-CREATE TABLE `1_causality_or_result_identification` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `word` varchar(100) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `question` text NOT NULL,
-  `correct_answer` varchar(255) NOT NULL,
-  `wrong_answer1` varchar(255) NOT NULL,
-  `wrong_answer2` varchar(255) NOT NULL,
-  `wrong_answer3` varchar(255) NOT NULL,
-  `explanation` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `1_causality_or_result_identification`
---
-
 INSERT INTO `1_causality_or_result_identification` (`id`, `word`, `type`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) VALUES
 (1, 'heavy rain', 'Causality or Result Identification', 'What caused the flooding in the streets?', 'Heavy rain', 'Lack of drainage', 'Overpopulation', 'Deforestation', 'Heavy rain caused the rivers to overflow, leading to flooding in the streets.'),
 (2, 'school policy', 'Causality or Result Identification', 'What was the result of the school’s new policy on extended deadlines?', 'Decreased student stress', 'Increased workload', 'Higher tuition fees', 'Stricter attendance rules', 'The new policy of extending deadlines helped reduce student stress during exams.'),
@@ -643,27 +598,3 @@ INSERT INTO `1_causality_or_result_identification` (`id`, `word`, `type`, `quest
 (4431, 'nature-based solutions', 'Causality or Result Identification', 'What happens when nature-based solutions are used to address environmental challenges?', 'Ecosystems are restored, and climate resilience is enhanced through natural processes', 'The cost of solutions increases dramatically', 'The systems fail to meet objectives', 'The technology becomes ineffective', 'Nature-based solutions use natural processes, like reforestation and wetland restoration, to mitigate climate change, protect biodiversity, and improve water quality.'),
 (4434, 'waste reduction', 'Causality or Result Identification', 'What happens when waste reduction strategies are implemented in industries?', 'Waste sent to landfills decreases, and resources are conserved through recycling and reuse', 'The production process becomes inefficient', 'The cost of production rises dramatically', 'The waste increases', 'Waste reduction strategies help businesses minimize their environmental impact by optimizing resource use, reducing landfill waste, and improving recycling efforts.');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `1_causality_or_result_identification`
---
-ALTER TABLE `1_causality_or_result_identification`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `1_causality_or_result_identification`
---
-ALTER TABLE `1_causality_or_result_identification`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4436;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
