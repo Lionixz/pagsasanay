@@ -12,17 +12,48 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <div class="container">
 
             <?php
+            // verbal ability
             $conn = require_once __DIR__ . '/config/database.php';
+            $variable = 3; // Limit
+            
+            $sql = "
+            SELECT *
+            FROM (
+                SELECT *,
+                    ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) as rn
+                FROM (
+            SELECT *, '1_antonym' AS source_table FROM `1_antonym`
+            UNION ALL
+            SELECT *, '1_causality_or_result_identification' AS source_table FROM `1_causality_or_result_identification`
+            UNION ALL
+            SELECT *, '1_contextual_meaning' AS source_table FROM `1_contextual_meaning`
+            UNION ALL
+            SELECT *, '1_definition' AS source_table FROM `1_definition`
+            UNION ALL
+            SELECT *, '1_field_specific_meaning' AS source_table FROM `1_field_specific_meaning`
+            UNION ALL
+            SELECT *, '1_literal_vs_figurative_language' AS source_table FROM `1_literal_vs_figurative_language`
+            UNION ALL
+            SELECT *, '1_metaphor_simile_identification' AS source_table FROM `1_metaphor_simile_identification`
+            UNION ALL
+            SELECT *, '1_slang_vs_formal_use' AS source_table FROM `1_slang_vs_formal_use`
+            UNION ALL
+            SELECT *, '1_synonym' AS source_table FROM `1_synonym`
+            UNION ALL
+            SELECT *, '1_word_precision' AS source_table FROM `1_word_precision`
+        ) AS all_questions
+    ) AS numbered
+    WHERE rn = 1
+    ORDER BY RAND()
+    LIMIT $variable";
 
-            $numericalLimit = 10; // Change to however many questions you want
+
+            $result = $conn->query($sql);
+            if (!$result) {
+                die("Query failed: " . $conn->error);
+            }
             $questions = [];
-
-            $sqlNum = "SELECT * FROM numericalability ORDER BY RAND() LIMIT $numericalLimit";
-            $resultNum = $conn->query($sqlNum);
-            if (!$resultNum)
-                die("Numerical query failed: " . $conn->error);
-
-            while ($row = $resultNum->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $choices = [
                     $row['correct_answer'],
                     $row['wrong_answer1'],
@@ -31,33 +62,28 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 ];
                 shuffle($choices);
                 $row['shuffled_choices'] = $choices;
-                $row['question_text'] = $row['question']; // Already LaTeX-formatted
-                $row['category'] = 'numerical';
                 $questions[] = $row;
             }
-            shuffle($questions);
+            $questions = array_slice($questions, 0, $variable); // Final cut
             ?>
 
-            <!-- MathJax for rendering LaTeX math -->
-            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-            <script id="MathJax-script" async
-                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-            <form action="actions/submit_numerical.php" method="post" id="quizForm">
+            <form action="actions/submit_verbal.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
-
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
-                        <?= ucfirst($q['category']) ?>
-                        <p><strong>Q<?= $index + 1 ?>:</strong> <?= $q['question_text'] ?>
-                        </p>
+                        <p><strong></strong> <?= htmlspecialchars($q['type']) ?></p>
+                        <p><strong>Q<?= $index + 1 ?>:</strong> <?= htmlspecialchars($q['question']) ?></p>
                         <div class="radio-group">
                             <?php foreach ($q['shuffled_choices'] as $choice): ?>
+
+                                <input type="hidden" name="questions[<?= $index ?>][id]" value="<?= $q['id'] ?>">
+                                <input type="hidden" name="questions[<?= $index ?>][table]" value="<?= $q['source_table'] ?>">
                                 <label class="custom-radio">
-                                    <input type="radio" name="answers[<?= $q['id'] ?>]" value="<?= htmlspecialchars($choice) ?>"
-                                        required>
+                                    <input type="radio" name="questions[<?= $index ?>][answer]"
+                                        value="<?= htmlspecialchars($choice) ?>" required>
                                     <span class="radio-mark"></span>
                                     <?= htmlspecialchars($choice) ?>
                                 </label>
+
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -167,7 +193,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 currentCard = findFirstUnanswered();
                 updateCards();
             </script>
-
 
         </div>
     </main>
