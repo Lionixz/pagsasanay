@@ -13,68 +13,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <?php
             $conn = require_once __DIR__ . '/config/database.php';
-            $variable = 5; // Total number of questions
-            
-            $tables = [
-                'n_1_variables_and_expressions',
-                'n_1_order_of_operations',
-                'n_1_properties_of_real_numbers',
-                'n_1_simplifying_algebraic_expressions',
-                'n_2_solving_linear_equations',
-                'n_2_solving_and_graphing_linear_inequalities',
-                'n_2_applications_of_linear_equations_and_inequalities',
-                'n_2_absolute_value_equations_and_inequalities',
-                'n_3_understanding_functions_and_relations',
-                'n_3_function_notation',
-                'n_3_graphing_linear_functions_and_lines',
-                'n_3_slope_and_rate_of_change',
-                'n_3_slope_intercept_point_slope_standard_form',
-                'n_3_graphing_inequalities_on_number_line_and_coordinate_plane',
-                'n_4_solving_systems_by_graphing',
-                'n_4_solving_systems_by_substitution',
-                'n_4_solving_systems_by_elimination',
-                'n_4_applications_of_systems_of_equations',
-                'n_4_systems_of_inequalities_and_their_graphs',
-                'n_5_adding_subtracting_multiplying_polynomials',
-                'n_5_special_products',
-                'n_5_factoring_polynomials',
-                'n_5_solving_quadratic_equations_by_factoring',
-                'n_6_introduction_to_quadratic_functions',
-                'n_6_graphing_quadratic_functions',
-                'n_6_vertex_axis_of_symmetry_and_intercepts',
-                'n_6_solving_quadratic_equations',
-                'n_6_quadratic_formula_and_discriminant',
-                'n_7_simplifying_rational_expressions',
-                'n_7_multiplying_and_dividing_rational_expressions',
-                'n_7_adding_and_subtracting_rational_expressions',
-                'n_7_solving_rational_equations',
-                'n_7_applications_of_rational_expressions',
-                'n_8_simplifying_radicals',
-                'n_8_operations_with_radical_expressions',
-                'n_8_solving_equations_with_radicals',
-                'n_9_laws_of_exponents',
-                'n_9_scientific_notation',
-                'n_9_exponential_growth_and_decay',
-                'n_10_arithmetic_sequences',
-                'n_10_geometric_sequences',
-                'n_11_mean_median_mode',
-                'n_11_basic_probability'
+
+            $category_limits = [
+                'Word Meaning and Usage' => 1,
+                'Word Structure and Family' => 2,
+                'Grammatical Forms and Structures' => 3,
             ];
 
-            // Build the UNION ALL query dynamically
-            $unions = array_map(fn($table) => "SELECT *, '$table' AS source_table FROM `$table`", $tables);
-            $unionSql = implode(" UNION ALL ", $unions);
-
-            $sql = " SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) AS rn
-            FROM ($unionSql) AS all_questions) AS numbered WHERE rn = 1 ORDER BY RAND() LIMIT $variable";
-
-            $result = $conn->query($sql);
-            if (!$result) {
-                die("Query failed: " . $conn->error);
-            }
-
-            $questions = [];
-            while ($row = $result->fetch_assoc()) {
+            function prepareQuestionRow($row)
+            {
                 $choices = [
                     $row['correct_answer'],
                     $row['wrong_answer1'],
@@ -82,16 +29,71 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     $row['wrong_answer3']
                 ];
                 shuffle($choices);
+                $row['source_table'] = 'verbal';
                 $row['shuffled_choices'] = $choices;
-                $questions[] = $row;
+                return $row;
             }
 
-            $questions = array_slice($questions, 0, $variable); // Optional final limit
+            $questions = [];
+
+            foreach ($category_limits as $category => $limit) {
+                // Get distinct types per category
+                $typeStmt = $conn->prepare("SELECT DISTINCT type FROM verbal WHERE category = ?");
+                $typeStmt->bind_param("s", $category);
+                $typeStmt->execute();
+                $typeResult = $typeStmt->get_result();
+
+                $types = [];
+                while ($row = $typeResult->fetch_assoc()) {
+                    $types[] = $row['type'];
+                }
+                shuffle($types);
+
+                $selectedCount = 0;
+
+                // Select 1 random question per type
+                foreach ($types as $type) {
+                    if ($selectedCount >= $limit)
+                        break;
+
+                    $stmt = $conn->prepare("SELECT * FROM verbal WHERE category = ? AND type = ? ORDER BY RAND() LIMIT 1");
+                    $stmt->bind_param("ss", $category, $type);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($row = $result->fetch_assoc()) {
+                        $questions[] = prepareQuestionRow($row);
+                        $selectedCount++;
+                    }
+                }
+
+                // Fill in remaining if fewer types than limit
+                if ($selectedCount < $limit) {
+                    $remaining = $limit - $selectedCount;
+
+                    $stmt = $conn->prepare("SELECT * FROM verbal WHERE category = ? ORDER BY RAND() LIMIT ?");
+                    $stmt->bind_param("si", $category, $remaining);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    while ($row = $result->fetch_assoc()) {
+                        $questions[] = prepareQuestionRow($row);
+                        $selectedCount++;
+                    }
+                }
+            }
+
+            // Optionally randomize final output across all categories
+// shuffle($questions);
             ?>
 
-            <form action="actions/submit_numerical.php" method="post" id="quizForm">
+
+            <form action="actions/submit_index.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
+
+                        <h4 style="text-align: center;"><strong></strong> <?= htmlspecialchars($q['category']) ?></h4>
+
                         <p><strong></strong> <?= htmlspecialchars($q['type']) ?></p>
                         <p><strong>Q<?= $index + 1 ?>:</strong> <?= htmlspecialchars($q['question']) ?></p>
 
@@ -101,7 +103,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                     style="max-width: 100%; height: auto;">
                             </div>
                         <?php endif; ?>
-
 
                         <div class="radio-group">
                             <?php foreach ($q['shuffled_choices'] as $choice): ?>
