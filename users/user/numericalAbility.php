@@ -11,47 +11,107 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <main>
         <div class="container">
 
-            <?php
-            // verbal ability
-            $conn = require_once __DIR__ . '/config/database.php';
-            $variable = 3; // Limit
-            
-            $sql = "
-            SELECT *
-            FROM (
-                SELECT *,
-                    ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) as rn
-                FROM (
-            SELECT *, '1_antonym' AS source_table FROM `1_antonym`
-            UNION ALL
-            SELECT *, '1_causality_or_result_identification' AS source_table FROM `1_causality_or_result_identification`
-            UNION ALL
-            SELECT *, '1_contextual_meaning' AS source_table FROM `1_contextual_meaning`
-            UNION ALL
-            SELECT *, '1_definition' AS source_table FROM `1_definition`
-            UNION ALL
-            SELECT *, '1_field_specific_meaning' AS source_table FROM `1_field_specific_meaning`
-            UNION ALL
-            SELECT *, '1_literal_vs_figurative_language' AS source_table FROM `1_literal_vs_figurative_language`
-            UNION ALL
-            SELECT *, '1_metaphor_simile_identification' AS source_table FROM `1_metaphor_simile_identification`
-            UNION ALL
-            SELECT *, '1_slang_vs_formal_use' AS source_table FROM `1_slang_vs_formal_use`
-            UNION ALL
-            SELECT *, '1_synonym' AS source_table FROM `1_synonym`
-            UNION ALL
-            SELECT *, '1_word_precision' AS source_table FROM `1_word_precision`
-        ) AS all_questions
-    ) AS numbered
-    WHERE rn = 1
-    ORDER BY RAND()
-    LIMIT $variable";
 
+            <?php
+            // Connect to DB
+            $conn = require_once __DIR__ . '/config/database.php';
+            $variable = 3; // Limit the total number of returned questions
+            
+            $sql = "SELECT * FROM (SELECT *,
+        ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) as rn FROM (
+        SELECT *, 'n_1_variables_and_expressions' AS source_table FROM `n_1_variables_and_expressions`
+        UNION ALL
+        SELECT *, 'n_1_order_of_operations' AS source_table FROM `n_1_order_of_operations`
+        UNION ALL
+        SELECT *, 'n_1_properties_of_real_numbers' AS source_table FROM `n_1_properties_of_real_numbers`
+        UNION ALL
+        SELECT *, 'n_1_simplifying_algebraic_expressions' AS source_table FROM `n_1_simplifying_algebraic_expressions`
+        UNION ALL
+        SELECT *, 'n_2_solving_linear_equations' AS source_table FROM `n_2_solving_linear_equations`
+        UNION ALL
+        SELECT *, 'n_2_solving_and_graphing_linear_inequalities' AS source_table FROM `n_2_solving_and_graphing_linear_inequalities`
+        UNION ALL
+        SELECT *, 'n_2_applications_of_linear_equations_and_inequalities' AS source_table FROM `n_2_applications_of_linear_equations_and_inequalities`
+        UNION ALL
+        SELECT *, 'n_2_absolute_value_equations_and_inequalities' AS source_table FROM `n_2_absolute_value_equations_and_inequalities`
+        UNION ALL
+        SELECT *, 'n_3_understanding_functions_and_relations' AS source_table FROM `n_3_understanding_functions_and_relations`
+        UNION ALL
+        SELECT *, 'n_3_function_notation' AS source_table FROM `n_3_function_notation`
+        UNION ALL
+        SELECT *, 'n_3_graphing_linear_functions_and_lines' AS source_table FROM `n_3_graphing_linear_functions_and_lines`
+        UNION ALL
+        SELECT *, 'n_3_slope_and_rate_of_change' AS source_table FROM `n_3_slope_and_rate_of_change`
+        UNION ALL
+        SELECT *, 'n_3_slope_intercept_point_slope_standard_form' AS source_table FROM `n_3_slope_intercept_point_slope_standard_form`
+        UNION ALL
+        SELECT *, 'n_3_graphing_inequalities_on_number_line_and_coordinate_plane' AS source_table FROM `n_3_graphing_inequalities_on_number_line_and_coordinate_plane`
+        UNION ALL
+        SELECT *, 'n_4_solving_systems_by_graphing' AS source_table FROM `n_4_solving_systems_by_graphing`
+        UNION ALL
+        SELECT *, 'n_4_solving_systems_by_substitution' AS source_table FROM `n_4_solving_systems_by_substitution`
+        UNION ALL
+        SELECT *, 'n_4_solving_systems_by_elimination' AS source_table FROM `n_4_solving_systems_by_elimination`
+        UNION ALL
+        SELECT *, 'n_4_applications_of_systems_of_equations' AS source_table FROM `n_4_applications_of_systems_of_equations`
+        UNION ALL
+        SELECT *, 'n_4_systems_of_inequalities_and_their_graphs' AS source_table FROM `n_4_systems_of_inequalities_and_their_graphs`
+        UNION ALL
+        SELECT *, 'n_5_adding_subtracting_multiplying_polynomials' AS source_table FROM `n_5_adding_subtracting_multiplying_polynomials`
+        UNION ALL
+        SELECT *, 'n_5_special_products' AS source_table FROM `n_5_special_products`
+        UNION ALL
+        SELECT *, 'n_5_factoring_polynomials' AS source_table FROM `n_5_factoring_polynomials`
+        UNION ALL
+        SELECT *, 'n_5_solving_quadratic_equations_by_factoring' AS source_table FROM `n_5_solving_quadratic_equations_by_factoring`
+        UNION ALL
+        SELECT *, 'n_6_introduction_to_quadratic_functions' AS source_table FROM `n_6_introduction_to_quadratic_functions`
+        UNION ALL
+        SELECT *, 'n_6_graphing_quadratic_functions' AS source_table FROM `n_6_graphing_quadratic_functions`
+        UNION ALL
+        SELECT *, 'n_6_vertex_axis_of_symmetry_and_intercepts' AS source_table FROM `n_6_vertex_axis_of_symmetry_and_intercepts`
+        UNION ALL
+        SELECT *, 'n_6_solving_quadratic_equations' AS source_table FROM `n_6_solving_quadratic_equations`
+        UNION ALL
+        SELECT *, 'n_6_quadratic_formula_and_discriminant' AS source_table FROM `n_6_quadratic_formula_and_discriminant`
+        UNION ALL
+        SELECT *, 'n_7_simplifying_rational_expressions' AS source_table FROM `n_7_simplifying_rational_expressions`
+        UNION ALL
+        SELECT *, 'n_7_multiplying_and_dividing_rational_expressions' AS source_table FROM `n_7_multiplying_and_dividing_rational_expressions`
+        UNION ALL
+        SELECT *, 'n_7_adding_and_subtracting_rational_expressions' AS source_table FROM `n_7_adding_and_subtracting_rational_expressions`
+        UNION ALL
+        SELECT *, 'n_7_solving_rational_equations' AS source_table FROM `n_7_solving_rational_equations`
+        UNION ALL
+        SELECT *, 'n_7_applications_of_rational_expressions' AS source_table FROM `n_7_applications_of_rational_expressions`
+        UNION ALL
+        SELECT *, 'n_8_simplifying_radicals' AS source_table FROM `n_8_simplifying_radicals`
+        UNION ALL
+        SELECT *, 'n_8_operations_with_radical_expressions' AS source_table FROM `n_8_operations_with_radical_expressions`
+        UNION ALL
+        SELECT *, 'n_8_solving_equations_with_radicals' AS source_table FROM `n_8_solving_equations_with_radicals`
+        UNION ALL
+        SELECT *, 'n_9_laws_of_exponents' AS source_table FROM `n_9_laws_of_exponents`
+        UNION ALL
+        SELECT *, 'n_9_scientific_notation' AS source_table FROM `n_9_scientific_notation`
+        UNION ALL
+        SELECT *, 'n_9_exponential_growth_and_decay' AS source_table FROM `n_9_exponential_growth_and_decay`
+        UNION ALL
+        SELECT *, 'n_10_arithmetic_sequences' AS source_table FROM `n_10_arithmetic_sequences`
+        UNION ALL
+        SELECT *, 'n_10_geometric_sequences' AS source_table FROM `n_10_geometric_sequences`
+        UNION ALL
+        SELECT *, 'n_11_mean_median_mode' AS source_table FROM `n_11_mean_median_mode`
+        UNION ALL
+        SELECT *, 'n_11_basic_probability' AS source_table FROM `n_11_basic_probability`) AS all_questions
+            ) AS numbered
+            WHERE rn = 1 ORDER BY RAND() LIMIT $variable";
 
             $result = $conn->query($sql);
             if (!$result) {
                 die("Query failed: " . $conn->error);
             }
+
             $questions = [];
             while ($row = $result->fetch_assoc()) {
                 $choices = [
@@ -64,8 +124,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 $row['shuffled_choices'] = $choices;
                 $questions[] = $row;
             }
-            $questions = array_slice($questions, 0, $variable); // Final cut
+
+            $questions = array_slice($questions, 0, $variable); // optional final slice
             ?>
+
+
 
             <form action="actions/submit_verbal.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
