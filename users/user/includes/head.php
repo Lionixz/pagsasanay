@@ -10,4 +10,9 @@ $userId = $_SESSION['user_id'];
     <title><?php echo isset($title) ? $title : "Default Title"; ?></title>
     <link rel="stylesheet" href="assets/css/index.css">
     <script src="assets/js/index.js" defer></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
