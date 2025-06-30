@@ -11,8 +11,6 @@ $userId = $_SESSION['user_id'];
     <link rel="stylesheet" href="assets/css/index.css">
     <script src="assets/js/index.js" defer></script>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>

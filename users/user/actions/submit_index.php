@@ -67,9 +67,9 @@ $userId = $_SESSION['user_id'];
                 <ul class="sub-menu">
                     <div>
                         <li><a href="../numericalAbility.php">Numerical Ability</a></li>
-                        <li><a href="#">Analytical Ability</a></li>
+                        <li><a href="../analitycalAbility.php">Analytical Ability</a></li>
                         <li><a href="../verbalAbility.php">Verbal Ability</a></li>
-                        <li><a href="#">General Information</a></li>
+                        <li><a href="../generalAbility.php">General Information</a></li>
                     </div>
                 </ul>
             </li>

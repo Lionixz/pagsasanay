@@ -10,50 +10,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php include('includes/sidebar.php'); ?> <!-- Include sidebar.php for the sidebar -->
     <main>
         <div class="container">
-
             <?php
-            // verbal ability
             $conn = require_once __DIR__ . '/config/database.php';
-            $variable = 3; // Limit
-            
-            $sql = "
-            SELECT *
-            FROM (
-                SELECT *,
-                    ROW_NUMBER() OVER (PARTITION BY type ORDER BY RAND()) as rn
-                FROM (
-            SELECT *, '1_antonym' AS source_table FROM `1_antonym`
-            UNION ALL
-            SELECT *, '1_causality_or_result_identification' AS source_table FROM `1_causality_or_result_identification`
-            UNION ALL
-            SELECT *, '1_contextual_meaning' AS source_table FROM `1_contextual_meaning`
-            UNION ALL
-            SELECT *, '1_definition' AS source_table FROM `1_definition`
-            UNION ALL
-            SELECT *, '1_field_specific_meaning' AS source_table FROM `1_field_specific_meaning`
-            UNION ALL
-            SELECT *, '1_literal_vs_figurative_language' AS source_table FROM `1_literal_vs_figurative_language`
-            UNION ALL
-            SELECT *, '1_metaphor_simile_identification' AS source_table FROM `1_metaphor_simile_identification`
-            UNION ALL
-            SELECT *, '1_slang_vs_formal_use' AS source_table FROM `1_slang_vs_formal_use`
-            UNION ALL
-            SELECT *, '1_synonym' AS source_table FROM `1_synonym`
-            UNION ALL
-            SELECT *, '1_word_precision' AS source_table FROM `1_word_precision`
-        ) AS all_questions
-    ) AS numbered
-    WHERE rn = 1
-    ORDER BY RAND()
-    LIMIT $variable";
 
+            $verbal_category_limits = [
+                'Word Meaning and Usage' => 5,
+                'Word Structure and Family' => 5,
+            ];
 
-            $result = $conn->query($sql);
-            if (!$result) {
-                die("Query failed: " . $conn->error);
-            }
-            $questions = [];
-            while ($row = $result->fetch_assoc()) {
+            function prepareQuestionRow($row, $source_table)
+            {
                 $choices = [
                     $row['correct_answer'],
                     $row['wrong_answer1'],
@@ -61,29 +27,143 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     $row['wrong_answer3']
                 ];
                 shuffle($choices);
+                $row['source_table'] = $source_table;
                 $row['shuffled_choices'] = $choices;
-                $questions[] = $row;
+                return $row;
             }
-            $questions = array_slice($questions, 0, $variable); // Final cut
+            function fetchQuestionsByCategory($conn, $table, $category_limits)
+            {
+                $questions = [];
+                foreach ($category_limits as $category => $limit) {
+                    // Get distinct types per category
+                    $typeStmt = $conn->prepare("SELECT DISTINCT type FROM $table WHERE category = ?");
+                    $typeStmt->bind_param("s", $category);
+                    $typeStmt->execute();
+                    $typeResult = $typeStmt->get_result();
+                    $types = [];
+                    while ($row = $typeResult->fetch_assoc()) {
+                        $types[] = $row['type'];
+                    }
+
+                    // shuffle($types);
+            
+                    $selectedCount = 0;
+                    // Select 1 random question per type
+                    foreach ($types as $type) {
+                        if ($selectedCount >= $limit)
+                            break;
+                        $stmt = $conn->prepare("SELECT * FROM $table WHERE category = ? AND type = ? ORDER BY RAND() LIMIT 1");
+                        $stmt->bind_param("ss", $category, $type);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($row = $result->fetch_assoc()) {
+                            $questions[] = prepareQuestionRow($row, $table);
+                            $selectedCount++;
+                        }
+                    }
+
+                    // Fill in remaining if fewer types than limit
+                    if ($selectedCount < $limit) {
+                        $remaining = $limit - $selectedCount;
+
+                        $stmt = $conn->prepare("SELECT * FROM $table WHERE category = ? ORDER BY RAND() LIMIT ?");
+                        $stmt->bind_param("si", $category, $remaining);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        while ($row = $result->fetch_assoc()) {
+                            $questions[] = prepareQuestionRow($row, $table);
+                            $selectedCount++;
+                        }
+                    }
+                }
+
+                return $questions;
+            }
+
+            // Fetch from all tables
+            $questions = array_merge(
+                fetchQuestionsByCategory($conn, 'verbal', $verbal_category_limits),
+            );
+
+            // Optionally shuffle the entire set
+            // shuffle($questions);
             ?>
 
-            <form action="actions/submit_verbal.php" method="post" id="quizForm">
+            <form action="actions/submit_index.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
+                        <h4 style="text-align: center;"><strong></strong> <?= htmlspecialchars($q['category']) ?></h4>
                         <p><strong></strong> <?= htmlspecialchars($q['type']) ?></p>
                         <p><strong>Q<?= $index + 1 ?>:</strong> <?= htmlspecialchars($q['question']) ?></p>
+
+                        <?php if (!empty($q['image'])): ?>
+                            <div class="question-media">
+                                <img src="assets/images/<?= htmlspecialchars($q['image']) ?>" alt="Question Image"
+                                    style="max-width: 50%; height: auto;">
+                            </div>
+                        <?php endif; ?>
+
+
+
+                        <?php if (!empty($q['chart_data'])): ?>
+                            <div class="chart-container" style="width:100%; height:auto;">
+                                <canvas id="chart<?= $index ?>"></canvas>
+                            </div>
+
+                            <script>
+                                const chartConfig<?= $index ?> = <?= $q['chart_data'] ?>;
+                                const ctx<?= $index ?> = document.getElementById('chart<?= $index ?>').getContext('2d');
+                                new Chart(ctx<?= $index ?>, {
+                                    type: 'bar',
+                                    data: chartConfig<?= $index ?>,
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        },
+                                        interaction: {
+                                            mode: null
+                                        },
+                                        plugins: {
+                                            tooltip: {
+                                                enabled: false
+                                            },
+                                            legend: {
+                                                onClick: null
+                                            }
+                                        },
+                                        events: [] // Fully disables all mouse events
+                                    }
+                                });
+                            </script>
+                        <?php endif; ?>
+
                         <div class="radio-group">
                             <?php foreach ($q['shuffled_choices'] as $choice): ?>
-
                                 <input type="hidden" name="questions[<?= $index ?>][id]" value="<?= $q['id'] ?>">
                                 <input type="hidden" name="questions[<?= $index ?>][table]" value="<?= $q['source_table'] ?>">
-                                <label class="custom-radio">
+
+                                <?php
+                                $ext = strtolower(pathinfo($choice, PATHINFO_EXTENSION));
+                                $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']);
+                                ?>
+
+                                <label class="custom-radio" style="display: block; margin-bottom: 10px;">
                                     <input type="radio" name="questions[<?= $index ?>][answer]"
                                         value="<?= htmlspecialchars($choice) ?>" required>
                                     <span class="radio-mark"></span>
-                                    <?= htmlspecialchars($choice) ?>
-                                </label>
 
+                                    <?php if ($isImage): ?>
+                                        <img src="assets/images/<?= htmlspecialchars($choice) ?>" alt="Choice Image"
+                                            style="max-width: 50%; height: auto;">
+                                    <?php else: ?>
+                                        <?= htmlspecialchars($choice) ?>
+                                    <?php endif; ?>
+                                </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -98,6 +178,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <button type="submit" id="submitBtn" hidden aria-hidden="true" tabindex="-1"></button>
                 </div>
             </form>
+
 
             <script>
                 const cards = document.querySelectorAll('.card');

@@ -13,9 +13,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php
             $conn = require_once __DIR__ . '/config/database.php';
 
-            $numerical_limits = [
-                'Foundations and Basics' => 5,
-                'Equations and Inequalities' => 5,
+            $general_category_limits = [
+                'Philippine History' => 5,
             ];
 
             function prepareQuestionRow($row, $source_table)
@@ -84,7 +83,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             // Fetch from all tables
             $questions = array_merge(
-                fetchQuestionsByCategory($conn, 'numerical', $numerical_limits),
+                fetchQuestionsByCategory($conn, 'general', $general_category_limits),
             );
 
             // Optionally shuffle the entire set

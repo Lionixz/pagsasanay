@@ -14,20 +14,25 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $conn = require_once __DIR__ . '/config/database.php';
 
             $verbal_category_limits = [
-                'Word Meaning and Usage' => 1,
-                'Word Structure and Family' => 1,
-                'Grammatical Forms and Structures' => 1,
+                'Word Meaning and Usage' => 5,
+                'Word Structure and Family' => 5,
             ];
 
             $numerical_limits = [
-                'Foundations and Basics' => 1,
-                'Equations and Inequalities' => 1,
-                'Functions and Graphing' => 1,
+                'Foundations and Basics' => 5,
+                'Equations and Inequalities' => 5,
             ];
 
             $analytical_limits = [
-                'Logic' => 1,
+                'Data Interpretation' => 2,
+                'Logical Reasoning' => 2,
             ];
+
+
+            $general_limits = [
+                'Philippine History' => 2,
+            ];
+
 
             function prepareQuestionRow($row, $source_table)
             {
@@ -42,31 +47,27 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 $row['shuffled_choices'] = $choices;
                 return $row;
             }
-
             function fetchQuestionsByCategory($conn, $table, $category_limits)
             {
                 $questions = [];
-
                 foreach ($category_limits as $category => $limit) {
                     // Get distinct types per category
                     $typeStmt = $conn->prepare("SELECT DISTINCT type FROM $table WHERE category = ?");
                     $typeStmt->bind_param("s", $category);
                     $typeStmt->execute();
                     $typeResult = $typeStmt->get_result();
-
                     $types = [];
                     while ($row = $typeResult->fetch_assoc()) {
                         $types[] = $row['type'];
                     }
-                    shuffle($types);
 
+                    // shuffle($types);
+            
                     $selectedCount = 0;
-
                     // Select 1 random question per type
                     foreach ($types as $type) {
                         if ($selectedCount >= $limit)
                             break;
-
                         $stmt = $conn->prepare("SELECT * FROM $table WHERE category = ? AND type = ? ORDER BY RAND() LIMIT 1");
                         $stmt->bind_param("ss", $category, $type);
                         $stmt->execute();
@@ -101,44 +102,64 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $questions = array_merge(
                 fetchQuestionsByCategory($conn, 'verbal', $verbal_category_limits),
                 fetchQuestionsByCategory($conn, 'numerical', $numerical_limits),
-                fetchQuestionsByCategory($conn, 'analytical', $analytical_limits)
+                fetchQuestionsByCategory($conn, 'analytical', $analytical_limits),
+                fetchQuestionsByCategory($conn, 'general', $general_limits)
+
             );
 
             // Optionally shuffle the entire set
             // shuffle($questions);
             ?>
 
-
             <form action="actions/submit_index.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
-
-                        <h4 style="text-align: center;"><?= htmlspecialchars($q['category']) ?></h4>
-                        <p><strong>Type:</strong> <?= htmlspecialchars($q['type']) ?></p>
+                        <h4 style="text-align: center;"><strong></strong> <?= htmlspecialchars($q['category']) ?></h4>
+                        <p><strong></strong> <?= htmlspecialchars($q['type']) ?></p>
                         <p><strong>Q<?= $index + 1 ?>:</strong> <?= htmlspecialchars($q['question']) ?></p>
 
-                        <?php if (!empty($q['image'])):
-                            $ext = strtolower(pathinfo($q['image'], PATHINFO_EXTENSION));
-                            $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']);
-                            $isVideo = in_array($ext, ['mp4', 'webm']);
-                            $isAudio = in_array($ext, ['mp3', 'ogg']);
-                            ?>
-                            <div class="question-media" style="margin: 10px 0; text-align: center;">
-                                <?php if ($isImage): ?>
-                                    <img src="assets/images/<?= htmlspecialchars($q['image']) ?>" alt="Question Image"
-                                        style="max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; background: #111; padding: 5px;">
-                                <?php elseif ($isVideo): ?>
-                                    <video controls style="max-width: 100%; border-radius: 10px;">
-                                        <source src="assets/media/<?= htmlspecialchars($q['image']) ?>" type="video/<?= $ext ?>">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                <?php elseif ($isAudio): ?>
-                                    <audio controls>
-                                        <source src="assets/media/<?= htmlspecialchars($q['image']) ?>" type="audio/<?= $ext ?>">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                <?php endif; ?>
+                        <?php if (!empty($q['image'])): ?>
+                            <div class="question-media">
+                                <img src="assets/images/<?= htmlspecialchars($q['image']) ?>" alt="Question Image"
+                                    style="max-width: 50%; height: auto;">
                             </div>
+                        <?php endif; ?>
+
+
+
+                        <?php if (!empty($q['chart_data'])): ?>
+                            <div class="chart-container" style="width:100%; height:auto;">
+                                <canvas id="chart<?= $index ?>"></canvas>
+                            </div>
+
+                            <script>
+                                const chartConfig<?= $index ?> = <?= $q['chart_data'] ?>;
+                                const ctx<?= $index ?> = document.getElementById('chart<?= $index ?>').getContext('2d');
+                                new Chart(ctx<?= $index ?>, {
+                                    type: 'bar',
+                                    data: chartConfig<?= $index ?>,
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        },
+                                        interaction: {
+                                            mode: null
+                                        },
+                                        plugins: {
+                                            tooltip: {
+                                                enabled: false
+                                            },
+                                            legend: {
+                                                onClick: null
+                                            }
+                                        },
+                                        events: [] // Fully disables all mouse events
+                                    }
+                                });
+                            </script>
                         <?php endif; ?>
 
                         <div class="radio-group">
@@ -147,8 +168,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                 <input type="hidden" name="questions[<?= $index ?>][table]" value="<?= $q['source_table'] ?>">
 
                                 <?php
-                                $choice_ext = strtolower(pathinfo($choice, PATHINFO_EXTENSION));
-                                $choiceIsImage = in_array($choice_ext, ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']);
+                                $ext = strtolower(pathinfo($choice, PATHINFO_EXTENSION));
+                                $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']);
                                 ?>
 
                                 <label class="custom-radio" style="display: block; margin-bottom: 10px;">
@@ -156,9 +177,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                         value="<?= htmlspecialchars($choice) ?>" required>
                                     <span class="radio-mark"></span>
 
-                                    <?php if ($choiceIsImage): ?>
+                                    <?php if ($isImage): ?>
                                         <img src="assets/images/<?= htmlspecialchars($choice) ?>" alt="Choice Image"
-                                            style="max-width: 120px; height: auto; border-radius: 6px;">
+                                            style="max-width: 50%; height: auto;">
                                     <?php else: ?>
                                         <?= htmlspecialchars($choice) ?>
                                     <?php endif; ?>

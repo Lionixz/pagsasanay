@@ -155,7 +155,7 @@ main p{
   margin-bottom: 20px;
   padding: min(3em, 15%);
 
-  h2, p { margin-top: 1em }
+  /* h2, p { margin-top: 1em } */
 }
 
 @media(max-width: 800px){
@@ -229,6 +229,12 @@ main p{
     }
   }
 }
+
+
+
+
+
+
 
 
 

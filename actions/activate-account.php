@@ -37,7 +37,12 @@ if (!$stmt) {
 
 $stmt->bind_param("i", $user["id"]);
 $stmt->execute();
+
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">

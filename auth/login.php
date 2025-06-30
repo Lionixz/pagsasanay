@@ -24,12 +24,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (!password_verify($password, $user["password_hash"])) {
-        die("Incorrect password");
+        $is_invalid = true;
+    } else {
+        $_SESSION["user_id"] = $user["id"];
+        $currentSessionId = session_id();
+        $update_sql = "UPDATE user SET session_token = ? WHERE id = ?";
+        $update_stmt = $mysqli->prepare($update_sql);
+        $update_stmt->bind_param("si", $currentSessionId, $user["id"]);
+        $update_stmt->execute();
+
+        if ($user["role"] === "admin") {
+            header("Location: ../admin/index.php");
+        } elseif ($user["role"] === "user") {
+            header("Location: ../users/user/index.php");
+        } else {
+            header("Location: ../index.php");
+        }
+        exit;
     }
+
 
     $_SESSION["user_id"] = $user["id"];
     $currentSessionId = session_id();
-
     // Store the current session ID in the database
     $sql = "UPDATE user SET session_token = ? WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
