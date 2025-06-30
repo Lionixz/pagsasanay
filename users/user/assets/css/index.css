@@ -237,147 +237,153 @@ main p{
 
 
 
-
-
-
-/* Card container */
+/* =================== Card Container =================== */
 .card {
-    display: none;
-    background-color: #27293d;
-    border: 1px solid #3a3a4d;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+  display: none;
+  background-color: #27293d;
+  border: 1px solid #3a3a4d;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .card.active {
-    display: block;
+  display: block;
 }
 
-/* Media elements inside questions */
+.card canvas {
+  width: 100% !important;
+  height: 300px !important;
+  display: block;
+}
+
+
+/* =================== Question Media =================== */
 .question-media img,
 .question-media video {
-    max-width: 100%;
-    max-height: 300px;
-    border-radius: 10px;
-    display: block;
-    margin: 10px auto;
-    background-color: #111;
-    padding: 5px;
-    object-fit: contain;
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 10px;
+  display: block;
+  margin: 10px auto;
+  background-color: #111;
+  padding: 5px;
+  object-fit: contain;
 }
 
 .question-media audio {
-    display: block;
-    margin: 10px auto;
-    width: 100%;
+  display: block;
+  margin: 10px auto;
+  width: 100%;
 }
 
-/* Radio options layout */
+
+/* =================== Radio Group =================== */
 .radio-group {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
-/* Hide native radio */
-.custom-radio input[type="radio"] {
-    display: none;
-}
 
-/* Style the custom radio circle */
-.custom-radio .radio-mark {
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    display: inline-block;
-    border: 2px solid #888;
-    margin-right: 10px;
-    vertical-align: middle;
-    position: relative;
-    transition: border-color 0.2s ease-in-out;
-}
-
-/* Checked state for radio */
-.custom-radio input[type="radio"]:checked + .radio-mark::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    background-color: #5e63ff;
-    border-radius: 50%;
-}
-
-/* Custom radio layout */
+/* =================== Custom Radio Styling =================== */
 .custom-radio {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: color 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.2s ease-in-out;
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+.custom-radio .radio-mark {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid #888;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-mark::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: #5e63ff;
+  border-radius: 50%;
 }
 
 .custom-radio:hover .radio-mark {
-    border-color: #5e63ff;
+  border-color: #5e63ff;
 }
 
 .custom-radio:hover {
-    color: #5e63ff;
+  color: #5e63ff;
 }
 
-/* Choice thumbnails */
+
+/* =================== Choice Thumbnails =================== */
 .custom-radio img {
-    max-width: 120px;
-    height: auto;
-    border-radius: 6px;
-    margin-left: 10px;
+  max-width: 120px;
+  height: auto;
+  border-radius: 6px;
+  margin-left: 10px;
 }
 
-/* Navigation buttons */
+
+/* =================== Navigation Buttons =================== */
 .navigation {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navigation button {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    background-color: #5e63ff;
-    color: #fff;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #5e63ff;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .navigation button:hover {
-    background-color: #4a4ff7;
+  background-color: #4a4ff7;
 }
 
-/* Responsive design */
+
+/* =================== Responsive Design =================== */
 @media (max-width: 600px) {
-    .navigation {
-        flex-direction: row;
-        gap: 0;
-    }
+  .navigation {
+    flex-direction: row;
+    gap: 0;
+  }
 
-    .navigation button {
-        width: 48%;
-    }
+  .navigation button {
+    width: 48%;
+  }
 
-    .custom-radio {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .custom-radio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .custom-radio img {
-        margin: 10px 0 0 0;
-    }
+  .custom-radio img {
+    margin: 10px 0 0 0;
+  }
 }

@@ -12,9 +12,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <div class="container">
             <?php
             $conn = require_once __DIR__ . '/config/database.php';
-
             $analytical_limits = [
-                'Data Interpretation' => 2,
+                'Data Interpretation' => 3,
+                'Logical Reasoning' => 3,
             ];
 
             function prepareQuestionRow($row, $source_table)
@@ -103,8 +103,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                     style="max-width: 50%; height: auto;">
                             </div>
                         <?php endif; ?>
-
-
 
                         <?php if (!empty($q['chart_data'])): ?>
                             <div class="chart-container" style="width:100%; height:auto;">

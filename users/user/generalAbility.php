@@ -14,7 +14,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $conn = require_once __DIR__ . '/config/database.php';
 
             $general_category_limits = [
-                'Philippine History' => 5,
+                'Philippine History' => 3,
             ];
 
             function prepareQuestionRow($row, $source_table)

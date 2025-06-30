@@ -14,23 +14,22 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $conn = require_once __DIR__ . '/config/database.php';
 
             $verbal_category_limits = [
-                'Word Meaning and Usage' => 5,
-                'Word Structure and Family' => 5,
+                'Word Meaning and Usage' => 1,
             ];
 
             $numerical_limits = [
-                'Foundations and Basics' => 5,
-                'Equations and Inequalities' => 5,
+                'Foundations and Basics' => 10,
+                'Order of Operations' => 10,
             ];
+
 
             $analytical_limits = [
-                'Data Interpretation' => 2,
-                'Logical Reasoning' => 2,
+                'Data Interpretation' => 1,
+                'Logical Reasoning' => 1,
             ];
 
-
             $general_limits = [
-                'Philippine History' => 2,
+                'Philippine History' => 1,
             ];
 
 

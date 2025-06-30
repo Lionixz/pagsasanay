@@ -14,8 +14,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $conn = require_once __DIR__ . '/config/database.php';
 
             $numerical_limits = [
-                'Foundations and Basics' => 5,
-                'Equations and Inequalities' => 5,
+                'Foundations and Basics' => 3,
+                'Order of Operations' => 3,
             ];
 
             function prepareQuestionRow($row, $source_table)

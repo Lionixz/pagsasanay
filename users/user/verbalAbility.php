@@ -14,8 +14,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $conn = require_once __DIR__ . '/config/database.php';
 
             $verbal_category_limits = [
-                'Word Meaning and Usage' => 5,
-                'Word Structure and Family' => 5,
+                'Word Meaning and Usage' => 3,
+                'Word Structure and Family' => 3,
             ];
 
             function prepareQuestionRow($row, $source_table)
