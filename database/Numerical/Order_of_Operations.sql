@@ -309,3 +309,5 @@ INSERT INTO numerical (category, type, word, question, correct_answer, wrong_ans
 ('Order of Operations','PEMDAS',NULL,'\\( 4 \\times (5 + 1)^2 - 10 \\)','134','130','138','140','\\(5+1=6,\\ 6^2=36,\\ 4\\times36=144,\\ 144-10=134\\)',NOW()),
 ('Order of Operations','PEMDAS',NULL,'\\( 3^3 + (2 \\times 4)^2 \\)','91','89','93','95','\\(3^3=27,\\ 2\\times4=8,\\ 8^2=64,\\ 27+64=91\\)',NOW()),
 ('Order of Operations','PEMDAS',NULL,'\\( (7 + 2)^2 \\div 3 - 5 \\)','22','24','20','26','\\(7+2=9,\\ 9^2=81,\\ 81\\div3=27,\\ 27-5=22\\)',NOW());
+
+

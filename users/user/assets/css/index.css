@@ -249,13 +249,21 @@ main p{
   transition: all 0.3s ease;
 }
 
+.chart-container {
+    height: auto;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
 .card.active {
   display: block;
 }
 
 .card canvas {
-  width: 100% !important;
-  height: 300px !important;
+  /* width: 100% !important; */
+  /* height: 300px !important; */
   display: block;
 }
 

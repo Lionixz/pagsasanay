@@ -18,13 +18,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             ];
 
             $numerical_limits = [
-                'Foundations and Basics' => 10,
-                'Order of Operations' => 10,
+                'Foundations and Basics' => 1,
+                'Order of Operations' => 1,
             ];
 
 
             $analytical_limits = [
-                'Data Interpretation' => 1,
+                'Data Interpretation' => 100,
                 'Logical Reasoning' => 1,
             ];
 
@@ -46,6 +46,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 $row['shuffled_choices'] = $choices;
                 return $row;
             }
+
+
             function fetchQuestionsByCategory($conn, $table, $category_limits)
             {
                 $questions = [];
@@ -124,26 +126,31 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             </div>
                         <?php endif; ?>
 
-
-
                         <?php if (!empty($q['chart_data'])): ?>
-                            <div class="chart-container" style="width:100%; height:auto;">
+
+                            <div class="chart-container">
                                 <canvas id="chart<?= $index ?>"></canvas>
                             </div>
 
                             <script>
-                                const chartConfig<?= $index ?> = <?= $q['chart_data'] ?>;
+
+                                // original
+                                const chartData<?= $index ?> = <?= $q['chart_data'] ?>;
                                 const ctx<?= $index ?> = document.getElementById('chart<?= $index ?>').getContext('2d');
+
+                                // If `type` exists in the database, use it, otherwise default to 'bar'
+                                const chartType<?= $index ?> = '<?= $q['type'] ?? 'bar' ?>';
+
                                 new Chart(ctx<?= $index ?>, {
-                                    type: 'bar',
-                                    data: chartConfig<?= $index ?>,
+                                    type: chartType<?= $index ?>,
+                                    data: chartData<?= $index ?>,
                                     options: {
                                         responsive: true,
-                                        scales: {
+                                        scales: (chartType<?= $index ?> === 'bar' || chartType<?= $index ?> === 'line') ? {
                                             y: {
                                                 beginAtZero: true
                                             }
-                                        },
+                                        } : {},
                                         interaction: {
                                             mode: null
                                         },
@@ -155,11 +162,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                                 onClick: null
                                             }
                                         },
-                                        events: [] // Fully disables all mouse events
+                                        events: []
                                     }
                                 });
+
                             </script>
                         <?php endif; ?>
+
 
                         <div class="radio-group">
                             <?php foreach ($q['shuffled_choices'] as $choice): ?>
