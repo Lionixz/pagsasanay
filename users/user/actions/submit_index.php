@@ -37,9 +37,20 @@ $userId = $_SESSION['user_id'];
                 </button>
             </li>
 
-            <li class="active">
+            <li class="<?= $currentPage === '../index.php' ? 'active' : '' ?>">
                 <a href="../index.php">
-                    <!-- Home Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#e3e3e3">
+                        <path
+                            d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
+                    </svg>
+                    <span>Account</span>
+                </a>
+            </li>
+
+
+            <li class="<?= $currentPage === '../csc.php' ? 'active' : '' ?>">
+                <a href="../csc.php">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="#e3e3e3">
                         <path
@@ -97,9 +108,14 @@ $userId = $_SESSION['user_id'];
                 die("Database connection failed.");
             }
 
-            $score = 0;
-            $total = 0;
-            $results = [];
+            // Define categories for the exam results
+            $categories = ['verbal', 'analytical', 'numerical', 'general'];
+            $categoryResults = [
+                'verbal' => ['score' => 0, 'total' => 0, 'correct' => [], 'wrong' => []],
+                'analytical' => ['score' => 0, 'total' => 0, 'correct' => [], 'wrong' => []],
+                'numerical' => ['score' => 0, 'total' => 0, 'correct' => [], 'wrong' => []],
+                'general' => ['score' => 0, 'total' => 0, 'correct' => [], 'wrong' => []]
+            ];
 
             // Validate and extract data
             if (!isset($_POST['questions']) || !is_array($_POST['questions'])) {
@@ -118,37 +134,84 @@ $userId = $_SESSION['user_id'];
                 if (!preg_match('/^[a-zA-Z0-9_]+$/', $table))
                     continue;
 
-                $stmt = $conn->prepare("SELECT question, correct_answer, explanation FROM `$table` WHERE id = ?");
+                $stmt = $conn->prepare("SELECT category, question, correct_answer, explanation FROM `$table` WHERE id = ?");
                 if (!$stmt) {
                     die("Prepare failed: " . $conn->error);
                 }
 
                 $stmt->bind_param("i", $questionId);
                 $stmt->execute();
-                $stmt->bind_result($question, $correctAnswer, $explanation);
+                $stmt->bind_result($category, $question, $correctAnswer, $explanation);
 
                 if ($stmt->fetch()) {
-                    $total++;
+                    // Ensure that we map subcategories to broader categories
+                    if (
+                        in_array(
+                            $category,
+                            [
+                                'Word Meaning and Usage',
+                                'Word Structure and Family'
+                            ]
+                        )
+                    ) {
+                        $category = 'verbal';
+
+
+
+                    } elseif (
+                        in_array(
+                            $category,
+                            [
+                                'Foundations and Basics',
+                                'Order of Operations'
+                            ]
+                        )
+                    ) {
+                        $category = 'numerical';
+
+
+                    } elseif (
+                        in_array($category, [
+                            'Data Interpretation',
+                            'Logical Reasoning'
+                        ])
+                    ) {
+                        $category = 'analytical';
+
+
+                    } elseif (
+                        in_array($category, [
+                            'Philippine History',
+                            'General Information'
+                        ])
+                    ) {
+                        $category = 'general';
+
+                    }
+
+
+                    $categoryResults[$category]['total']++;
                     $isCorrect = ($userAnswer === $correctAnswer);
-                    if ($isCorrect)
-                        $score++;
-
-                    $results[] = [
-                        'questionId' => $questionId,
-                        'question' => $question,
-                        'correct' => $isCorrect,
-                        'correctAnswer' => $correctAnswer,
-                        'userAnswer' => $userAnswer,
-                        'explanation' => $explanation
-                    ];
+                    if ($isCorrect) {
+                        $categoryResults[$category]['score']++;
+                        $categoryResults[$category]['correct'][] = [
+                            'questionId' => $questionId,
+                            'question' => $question,
+                            'correctAnswer' => $correctAnswer,
+                            'userAnswer' => $userAnswer
+                        ];
+                    } else {
+                        $categoryResults[$category]['wrong'][] = [
+                            'questionId' => $questionId,
+                            'question' => $question,
+                            'correctAnswer' => $correctAnswer,
+                            'userAnswer' => $userAnswer,
+                            'explanation' => $explanation
+                        ];
+                    }
                 }
-
                 $stmt->close();
             }
-
-            $wrongAnswers = array_filter($results, fn($r) => !$r['correct']);
-            $correctAnswers = array_filter($results, fn($r) => $r['correct']);
-            $percentage = $total > 0 ? round(($score / $total) * 100, 2) : 0;
 
             // Render function for image/text answers
             function renderAnswer($answer)
@@ -160,40 +223,65 @@ $userId = $_SESSION['user_id'];
                 }
                 return htmlspecialchars($answer);
             }
+
+            // Display Summary at the top
+            echo "<h2>Exam Summary</h2>";
+            $totalScore = 0;
+            $totalQuestions = 0;
+
+            foreach ($categories as $category) {
+                $categoryData = $categoryResults[$category];
+                $percentage = $categoryData['total'] > 0 ? round(($categoryData['score'] / $categoryData['total']) * 100, 2) : 0;
+                echo "<p><strong>" . ucfirst($category) . ":</strong> {$categoryData['score']} / {$categoryData['total']} ({$percentage}%)</p>";
+                $totalScore += $categoryData['score'];
+                $totalQuestions += $categoryData['total'];
+            }
+
+            // Calculate total percentage
+            $totalPercentage = $totalQuestions > 0 ? round(($totalScore / $totalQuestions) * 100, 2) : 0;
+            echo "<p><strong>Total:</strong> {$totalScore} / {$totalQuestions} ({$totalPercentage}%)</p>";
+
+            // Display results per category
+            foreach ($categories as $category) {
+                $categoryData = $categoryResults[$category];
+                $percentage = $categoryData['total'] > 0 ? round(($categoryData['score'] / $categoryData['total']) * 100, 2) : 0;
+
+                echo "<h2>" . ucfirst($category) . " Results</h2>";
+                echo "<p>Score: {$categoryData['score']} / {$categoryData['total']} ({$percentage}%)</p>";
+
+                // Display wrong answers
+                echo "<h3>Wrong Answers</h3>";
+                if (!empty($categoryData['wrong'])) {
+                    foreach ($categoryData['wrong'] as $r) {
+                        echo "<div>
+                        <p><strong>Question:</strong> " . htmlspecialchars($r['question']) . "</p>
+                        <p><strong>Your answer: <br></strong>" . renderAnswer($r['userAnswer']) . "</p>
+                        <p><strong>Correct answer: <br></strong>" . renderAnswer($r['correctAnswer']) . "</p>
+                        <p><strong>Explanation:</strong> " . htmlspecialchars($r['explanation']) . "</p>
+                      </div><hr>";
+                    }
+                } else {
+                    echo "<p>No wrong answers. Great job!</p>";
+                }
+
+                // Display correct answers
+                echo "<h3>Correct Answers</h3>";
+                if (!empty($categoryData['correct'])) {
+                    foreach ($categoryData['correct'] as $r) {
+                        echo "<div>
+                        <p><strong>Question:</strong> " . htmlspecialchars($r['question']) . "</p>
+                        <p><strong>Your answer: <br></strong>" . renderAnswer($r['userAnswer']) . "</p>
+                      </div><hr>";
+                    }
+                } else {
+                    echo "<p>No correct answers.</p>";
+                }
+            }
             ?>
-
-            <h2>Exam Results</h2>
-            <p>Score: <?= $score ?> / <?= $total ?> (<?= $percentage ?>%)</p>
-
-            <h3>Wrong Answers</h3>
-            <?php if (!empty($wrongAnswers)): ?>
-                <?php foreach ($wrongAnswers as $r): ?>
-                    <div>
-                        <p><strong>Question:</strong> <?= htmlspecialchars($r['question']) ?></p>
-                        <p><strong>Your answer: <br></strong> <?= renderAnswer($r['userAnswer']) ?></p>
-                        <p><strong>Correct answer: <br></strong> <?= renderAnswer($r['correctAnswer']) ?></p>
-                        <p><strong>Explanation:</strong> <?= htmlspecialchars($r['explanation']) ?></p>
-                    </div>
-                    <hr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No wrong answers. Great job!</p>
-            <?php endif; ?>
-
-            <h3>Correct Answers</h3>
-            <?php if (!empty($correctAnswers)): ?>
-                <?php foreach ($correctAnswers as $r): ?>
-                    <div>
-                        <p><strong>Question:</strong> <?= htmlspecialchars($r['question']) ?></p>
-                        <p><strong>Your answer: <br></strong> <?= renderAnswer($r['userAnswer']) ?></p>
-                    </div>
-                    <hr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No correct answers.</p>
-            <?php endif; ?>
         </div>
     </main>
+
+
 
     <?php include(__DIR__ . '/../includes/footer.php'); ?>
 
