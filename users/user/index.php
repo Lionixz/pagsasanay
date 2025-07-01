@@ -22,9 +22,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 'Order of Operations' => 1,
             ];
 
-
             $analytical_limits = [
-                'Data Interpretation' => 100,
+                'Data Interpretation' => 10,
                 'Logical Reasoning' => 1,
             ];
 
@@ -46,7 +45,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 $row['shuffled_choices'] = $choices;
                 return $row;
             }
-
 
             function fetchQuestionsByCategory($conn, $table, $category_limits)
             {
@@ -206,7 +204,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <button type="submit" id="submitBtn" hidden aria-hidden="true" tabindex="-1"></button>
                 </div>
             </form>
-
 
             <script>
                 const cards = document.querySelectorAll('.card');

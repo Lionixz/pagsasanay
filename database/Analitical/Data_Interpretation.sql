@@ -1,8 +1,6 @@
 -- 1. BAR CHART
-INSERT INTO analytical (category, type, question, chart_data, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, explanation, created_at) VALUES ('Data Interpretation', 'bar', 'Which product sold the most in Q2?', '{ "labels": ["Q1", "Q2", "Q3", "Q4"], "datasets": [{ "label": "Product A", "data": [120, 180, 150, 130], "backgroundColor": "#36A2EB" }] }', 'Q2', 'Q1', 'Q3', 'Q4', 'Product A had the highest sales in Q2 (180 units).', NOW());
-
-
-
+INSERT INTO analytical (category, type, question, chart_data, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, explanation, created_at) VALUES 
+('Data Interpretation', 'bar', 'Which branch experienced alternating monthly customer turnout?', '{"labels": ["Jan", "Feb", "Mar", "Apr", "May"], "datasets": [{"label": "Branch A", "data": [200, 150, 200, 150, 200], "backgroundColor": "#AB47BC"}, {"label": "Branch B", "data": [180, 190, 200, 210, 220], "backgroundColor": "#FFA726"}]}', 'Branch A', 'Branch B', 'Branch C', 'Branch D', 'Branch A alternates exactly between 200 and 150 across the months.', NOW());
 
 
 
