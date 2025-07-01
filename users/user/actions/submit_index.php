@@ -150,7 +150,6 @@ $userId = $_SESSION['user_id'];
                             $category,
                             [
                                 'Word Meaning and Usage',
-                                'Word Structure and Family'
                             ]
                         )
                     ) {

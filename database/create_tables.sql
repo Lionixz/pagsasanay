@@ -16,8 +16,6 @@ CREATE TABLE `user` (
   UNIQUE KEY `account_activation_hash` (`account_activation_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
-
 CREATE TABLE `verbal` (
   `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
   `category` VARCHAR(100) NOT NULL,
@@ -34,7 +32,6 @@ CREATE TABLE `verbal` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 CREATE TABLE `numerical` (
   `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -53,7 +50,6 @@ CREATE TABLE `numerical` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 CREATE TABLE `analytical` (
   `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
   `category` VARCHAR(100) NOT NULL, -- Added category column
@@ -70,7 +66,6 @@ CREATE TABLE `analytical` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Added created_at column
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 CREATE TABLE `general` (
   `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,

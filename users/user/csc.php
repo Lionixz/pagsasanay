@@ -15,16 +15,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             $conn = require_once __DIR__ . '/config/database.php';
 
             $verbal_category_limits = [
-                'Word Meaning and Usage' => 20,
+                'Word Meaning and Usage' => 10,
             ];
 
             $numerical_limits = [
-                'Foundations and Basics' => 3,
+                'Foundations and Basics' => 1,
                 'Order of Operations' => 1,
             ];
 
             $analytical_limits = [
-                'Data Interpretation' => 5,
+                'Data Interpretation' => 1,
                 'Logical Reasoning' => 1,
             ];
 
@@ -47,6 +47,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 return $row;
             }
 
+
             function fetchQuestionsByCategory($conn, $table, $category_limits)
             {
                 $questions = [];
@@ -60,43 +61,45 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     while ($row = $typeResult->fetch_assoc()) {
                         $types[] = $row['type'];
                     }
-
-                    // shuffle($types);
-            
-                    $selectedCount = 0;
-                    // Select 1 random question per type
-                    foreach ($types as $type) {
-                        if ($selectedCount >= $limit)
-                            break;
-                        $stmt = $conn->prepare("SELECT * FROM $table WHERE category = ? AND type = ? ORDER BY RAND() LIMIT 1");
-                        $stmt->bind_param("ss", $category, $type);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-
-                        if ($row = $result->fetch_assoc()) {
-                            $questions[] = prepareQuestionRow($row, $table);
-                            $selectedCount++;
-                        }
+                    // Check if there are any distinct types
+                    $totalTypes = count($types);
+                    if ($totalTypes === 0) {
+                        // No types found, skip to the next category
+                        continue;
                     }
-
-                    // Fill in remaining if fewer types than limit
-                    if ($selectedCount < $limit) {
-                        $remaining = $limit - $selectedCount;
-
-                        $stmt = $conn->prepare("SELECT * FROM $table WHERE category = ? ORDER BY RAND() LIMIT ?");
-                        $stmt->bind_param("si", $category, $remaining);
+                    // Shuffle the types to randomize question fetching
+                    shuffle($types);
+                    $selectedCount = 0;
+                    // Calculate base number of questions per type
+                    $baseQuestionsPerType = intdiv($limit, $totalTypes); // Equal distribution per type
+                    $remainingQuestions = $limit - ($baseQuestionsPerType * $totalTypes); // Remaining questions to be allocated
+                    // Select questions for each type
+                    foreach ($types as $type) {
+                        $questionsForThisType = $baseQuestionsPerType;
+                        // Distribute the remaining questions one per type
+                        if ($remainingQuestions > 0) {
+                            $questionsForThisType++;
+                            $remainingQuestions--;
+                        }
+                        // Fetch the questions for this type
+                        $stmt = $conn->prepare("SELECT * FROM $table WHERE category = ? AND type = ? ORDER BY RAND() LIMIT ?");
+                        $stmt->bind_param("ssi", $category, $type, $questionsForThisType);
                         $stmt->execute();
                         $result = $stmt->get_result();
-
                         while ($row = $result->fetch_assoc()) {
                             $questions[] = prepareQuestionRow($row, $table);
                             $selectedCount++;
                         }
+                        // If we've selected enough questions, exit
+                        if ($selectedCount >= $limit) {
+                            break;
+                        }
                     }
                 }
-
                 return $questions;
             }
+
+
 
             // Fetch from all tables
             $questions = array_merge(

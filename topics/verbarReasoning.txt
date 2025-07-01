@@ -1,94 +1,50 @@
-1. Word Meaning and Usage
-----------------------------
-Antonym
-Causality or Result Identification
-Contextual Meaning (based on a sentence)
-Definition
-Field-Specific Meaning (e.g., science vs. everyday)
-Literal vs. Figurative Language
-Metaphor/Simile Identification
-Slang vs. Formal Use
-Synonym
-Word Precision
+1. Vocabulary and Word Usage
+#Antonyms: Identify words that have opposite meanings.
+#Synonyms: Identify words that have the same or similar meanings.
+Contextual Meaning: Determine the meaning of a word based on the context of the sentence.
+Word Precision: Choose the most accurate word for a given context.
+Slang vs. Formal Use: Recognize when a word is used in slang versus formal contexts.
+Field-Specific Meaning: Interpret words in the context of specific fields (e.g., science vs. everyday language).
+Literal vs. Figurative Language: Differentiate between the literal meaning and figurative (metaphorical) use of words.
 
-2. Word Structure and Family
------------------------------
-Affix Identification (prefix/suffix)
-Pronunciation Challenge
-Root Word
-Word Association
-Word Classification
-Word Family (choose related word)
-Word Formation
-Word Stress Identification
+2. Word Formation
+Affix Identification: Identify the prefix or suffix attached to a root word.
+Root Word Identification: Determine the base form of a word from which others are derived.
+Word Family Identification: Choose words that belong to the same family (e.g., "act" → "action," "active," "actor").
+Word Classification: Classify words based on their grammatical category (noun, verb, adjective, etc.).
 
-3. Grammatical Forms and Structures
------------------------------------
-Adjective Form
-Adverb Form
-Causative Form (make, let, have, get)
-Conditional Sentence Identification
-Correct Comparative Form
-Correct Superlative Form
-Noun Form
-Part of Speech
-Plural Form
-Pronoun Case (Subject, Object, Possessive)
-
-Subject-Verb Agreement
-Tense Form (present, past, etc.)
-Verb Form
-Voice (Active/Passive)
-
+3. Grammatical Structures
+Adjective and Adverb Forms: Recognize and form adjectives and adverbs.
+Causative Verbs: Identify the use of causative verbs like "make," "let," "have," "get."
+Tense Identification: Determine the correct tense form (present, past, future).
+Subject-Verb Agreement: Ensure that the subject and verb in a sentence agree in number and person.
+Noun Forms and Plurals: Convert nouns into plural forms or other types.
+Pronoun Case Identification: Identify subject, object, or possessive forms of pronouns.
+Active vs. Passive Voice: Transform sentences between active and passive voice.
+Preposition Identification: Identify the correct preposition in a sentence (e.g., "on," "in," "at," "by").
+Preposition Usage: Choose the appropriate preposition for different contexts (e.g., "in the morning," "at the park," "on the table").
 4. Sentence Construction and Correction
----------------------------------------
-Active Voice Transformation
-Category Identification (emotion, action, etc.)
-Choose the Best Word for the Tone
-Choose the Correct Word Order
-Choose Natural Word Combination
 
-Choose the Odd One Out
-Collocation Gap-Fill
-Common Collocation (e.g., “precise measurement”)
-Conjunction and Connector Usage
-Error Identification
-
-Fill in the Blank
-Idiomatic Usage
-Match with Antonym (list form)
-Match with Synonym (list form)
-Negative Form
-
-Passive Voice Transformation
-Report Speech Identification
-Rewriting (choose best rewritten version)
-Sentence Completion
-Sentence Correction
-
-Word Pairing (e.g., “bread and ___”)
-Word Usage in Different Contexts
+Error Identification: Spot errors in grammar, punctuation, or word usage within sentences.
+Sentence Rewriting: Choose the best rewritten version of a sentence.
+Word Order: Identify the correct order of words in a sentence.
+Collocation: Identify commonly paired words (e.g., "strong coffee," "make a decision").
+Fill in the Blank: Complete sentences with the correct word.
+Sentence Completion: Complete sentences based on context or meaning.
+Negative Form: Formulate sentences in the negative form (e.g., "She is not happy").
 
 5. Punctuation and Spelling
-----------------------------
-Capitalization
-Correct Spelling
-Punctuation
+Capitalization: Correct the capitalization in sentences or phrases.
+Correct Spelling: Identify and correct misspelled words.
+Punctuation: Identify or correct punctuation mistakes in sentences.
 
 6. Context and Tone
---------------------
-Choose Best Word to Complete a Paragraph
-Use in Business Sentence
-Use in Formal Context
-Use in Informal Context
-Use in Narrative Sentence
+Tone Identification: Identify the tone of a passage or sentence (formal, informal, sarcastic, etc.).
+Word Usage in Context: Choose the correct word based on the tone or context of the sentence.
+Choose Best Word for Paragraph Completion: Select the most appropriate word to complete a paragraph or passage.
 
 7. Advanced Concepts
----------------------
-Contrastive Usage (choosing between similar words)
-Formality Level Identification
-Homeman Identification
-Homophones (e.g., their/there/they’re)
-Pronoun Case Identification
-Sentence with No Errors
-Word or Phrase Paraphrasing
+Formality Level: Determine the appropriate level of formality in a given sentence or context.
+Homophones: Choose the correct word between words that sound the same but have different meanings (e.g., "their" vs. "there").
+Contrastive Usage: Distinguish between words that are similar but used in different contexts.
+Paraphrasing: Rewrite sentences or passages with the same meaning but different wording.
