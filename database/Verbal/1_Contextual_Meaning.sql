@@ -1,0 +1,3 @@
+INSERT INTO `verbal` (`category`, `type`, `word`, `question`, `correct_answer`, `wrong_answer1`, `wrong_answer2`, `wrong_answer3`, `explanation`) 
+VALUES
+('Word Meaning and Usage', 'Contextual Meaning', 'Abandon', 'What does the word "Abandon" mean?', 'To leave something behind without care or intention to return', 'To carry something along without concern for others', 'To stay with something for an indefinite period', 'To collect something without taking it further', 'Abandon means to leave something or someone behind, often without care or future intention to return.');

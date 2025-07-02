@@ -1,7 +1,8 @@
 1. Vocabulary and Word Usage
-#Antonyms: Identify words that have opposite meanings.
-#Synonyms: Identify words that have the same or similar meanings.
-Contextual Meaning: Determine the meaning of a word based on the context of the sentence.
+#   Antonyms: Identify words that have opposite meanings.
+#   Synonyms: Identify words that have the same or similar meanings.
+#   Contextual Meaning: Determine the meaning of a word based on the context of the sentence.
+#   Definition:
 Word Precision: Choose the most accurate word for a given context.
 Slang vs. Formal Use: Recognize when a word is used in slang versus formal contexts.
 Field-Specific Meaning: Interpret words in the context of specific fields (e.g., science vs. everyday language).

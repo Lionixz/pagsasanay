@@ -12,6 +12,13 @@ TRUNCATE TABLE `analytical`;
 TRUNCATE TABLE `general`;
 
 
+-- drop id 
+ALTER TABLE verbal DROP COLUMN id;
+ALTER TABLE numerical DROP COLUMN id;
+ALTER TABLE analytical DROP COLUMN id;
+ALTER TABLE general DROP COLUMN id;
+
+
 -- count 
 SELECT COUNT(*) AS total FROM `verbal`;
 

@@ -1,7 +1,8 @@
 <?php
 session_start();
 session_regenerate_id();
-$is_invalid = false;
+$error_message = ''; // Variable to hold error message
+$success_message = ''; // Initialize success_message variable
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mysqli = require __DIR__ . "/../config/database.php";
@@ -16,15 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = $result->fetch_assoc();
 
     if (!$user) {
-        die("User not found");
-    }
-
-    if ($user["account_activation_hash"] !== null) {
-        die("Account not activated. Check your email.");
-    }
-
-    if (!password_verify($password, $user["password_hash"])) {
-        $is_invalid = true;
+        $error_message = "User not found"; // User not found error
+    } elseif ($user["account_activation_hash"] !== null) {
+        $error_message = "Account not activated. Check your email."; // Account not activated
+    } elseif (!password_verify($password, $user["password_hash"])) {
+        $error_message = "Invalid password. Please try again."; // Incorrect password
     } else {
         $_SESSION["user_id"] = $user["id"];
         $currentSessionId = session_id();
@@ -40,28 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             header("Location: ../index.php");
         }
-        exit;
+        exit; // Ensures no further code is executed
     }
-
-
-    $_SESSION["user_id"] = $user["id"];
-    $currentSessionId = session_id();
-    // Store the current session ID in the database
-    $sql = "UPDATE user SET session_token = ? WHERE id = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("si", $currentSessionId, $user["id"]);
-    $stmt->execute();
-
-    if ($user["role"] === "admin") {
-        header("Location: ../admin/index.php");
-    } elseif ($user["role"] === "user") {
-        header("Location: ../users/user/index.php");
-    } else {
-        header("Location: ../index.php");
-    }
-    exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -75,21 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/login.css">
-    <script type="text/javascript" src="assets/js/login.js" defer></script>
+    <script type="text/javascript" src="../assets/js/login.js" defer></script>
 </head>
 
-
-
 <body>
-
     <div class="container">
         <h1>Login</h1>
 
-        <?php if ($is_invalid): ?>
-            <p class="error-message">Invalid login credentials</p>
+        <!-- Display error message if login fails -->
+        <?php if ($error_message): ?>
+            <p class="error-message"><?= htmlspecialchars($error_message) ?></p>
         <?php endif; ?>
 
-        <form method="post">
+        <form method="post" id="loginForm">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" required>
 
@@ -106,21 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <a href="forgot_password.php">Forgot password?</a> |
             <a href="signup.php">Sign up</a>
         </p>
-
     </div>
-
-    <script>
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordField = document.getElementById('password');
-
-        togglePassword.addEventListener('click', function (e) {
-            const type = passwordField.type === 'password' ? 'text' : 'password';
-            passwordField.type = type;
-            this.classList.toggle('fa-eye-slash');
-            this.classList.toggle('fa-eye');
-        });
-    </script>
-
 </body>
 
 </html>

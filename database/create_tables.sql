@@ -16,6 +16,22 @@ CREATE TABLE `user` (
   UNIQUE KEY `account_activation_hash` (`account_activation_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE exam_results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(10) UNSIGNED NOT NULL,
+    verbal_percentage FLOAT NOT NULL,
+    analytical_percentage FLOAT NOT NULL,
+    numerical_percentage FLOAT NOT NULL,
+    general_percentage FLOAT NOT NULL,
+    total_percentage FLOAT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
+);
+
+
+
+
 CREATE TABLE `verbal` (
   `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
   `category` VARCHAR(100) NOT NULL,
@@ -66,6 +82,7 @@ CREATE TABLE `analytical` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Added created_at column
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 CREATE TABLE `general` (
   `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,

@@ -237,6 +237,55 @@ main p{
 
 
 
+
+
+
+
+
+h2 {
+  font-size: 2em;
+  color: var(--accent-clr);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.2em;
+  color: var(--text-clr);
+  margin-bottom: 10px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
+div.correct {
+  background-color: #28a745;
+  border-left: 5px solid #4CAF50;
+}
+
+div.wrong {
+  background-color: #f8d7da;
+  border-left: 5px solid #dc3545;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =================== Card Container =================== */
 .card {
   display: none;
@@ -254,6 +303,9 @@ main p{
     width: 100%;
     position: relative;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 
@@ -262,21 +314,17 @@ main p{
 }
 
 .card canvas {
-  /* width: 100% !important; */
-  /* height: 300px !important; */
+  height: 300px !important;
   display: block;
+  background-color: white;
 }
 
 
 /* =================== Question Media =================== */
 .question-media img,
 .question-media video {
-  max-width: 100%;
-  max-height: 300px;
-  border-radius: 10px;
   display: block;
   margin: 10px auto;
-  background-color: #111;
   padding: 5px;
   object-fit: contain;
 }
@@ -287,69 +335,50 @@ main p{
   width: 100%;
 }
 
-
 /* =================== Radio Group =================== */
 .radio-group {
-  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two items per row by default */
+  gap: 15px;
+  margin-top: 20px;
 }
 
-
 /* =================== Custom Radio Styling =================== */
+
 .custom-radio {
   cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 16px;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.custom-radio:hover {
+  color: #5e63ff;
+  transform: scale(1.05);
+}
+
+.custom-radio input {
+  margin-right: 10px;
+  accent-color: #5e63ff;
+}
+
+.custom-radio label {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
   transition: color 0.2s ease-in-out;
+}
+
+.custom-radio:hover label {
+  color: #5e63ff;
 }
 
 .custom-radio input[type="radio"] {
   display: none;
 }
-
-.custom-radio .radio-mark {
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  display: inline-block;
-  border: 2px solid #888;
-  margin-right: 10px;
-  vertical-align: middle;
-  position: relative;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.custom-radio input[type="radio"]:checked + .radio-mark::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 8px;
-  height: 8px;
-  background-color: #5e63ff;
-  border-radius: 50%;
-}
-
-.custom-radio:hover .radio-mark {
-  border-color: #5e63ff;
-}
-
-.custom-radio:hover {
-  color: #5e63ff;
-}
-
-
-/* =================== Choice Thumbnails =================== */
-.custom-radio img {
-  max-width: 120px;
-  height: auto;
-  border-radius: 6px;
-  margin-left: 10px;
-}
-
 
 /* =================== Navigation Buttons =================== */
 .navigation {
@@ -374,9 +403,14 @@ main p{
   background-color: #4a4ff7;
 }
 
-
 /* =================== Responsive Design =================== */
 @media (max-width: 600px) {
+  .radio-group {
+    grid-template-columns: 1fr; /* One item per row on mobile */
+    gap: 10px; /* Smaller gap between items */
+    margin-top: 30px;
+  }
+
   .navigation {
     flex-direction: row;
     gap: 0;
@@ -386,12 +420,16 @@ main p{
     width: 48%;
   }
 
-  .custom-radio {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .custom-radio img {
     margin: 10px 0 0 0;
+    width: 100px;
   }
+
+  .card canvas {
+    height: 200px !important; /* Adjust the height for larger screens */
+  }
+ 
 }
+
+
+

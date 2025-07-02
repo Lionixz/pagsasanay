@@ -4,6 +4,7 @@
 <?php
 include('includes/head.php');
 $currentPage = basename($_SERVER['PHP_SELF']);
+
 ?>
 
 <body>

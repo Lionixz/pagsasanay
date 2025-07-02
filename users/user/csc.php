@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
 include('includes/head.php');
 $currentPage = basename($_SERVER['PHP_SELF']);
@@ -8,31 +5,24 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <body>
     <?php include('includes/sidebar.php'); ?> <!-- Include sidebar.php for the sidebar -->
-
     <main>
         <div class="container">
             <?php
             $conn = require_once __DIR__ . '/config/database.php';
-
             $verbal_category_limits = [
-                'Word Meaning and Usage' => 10,
+                'Word Meaning and Usage' => 3,
             ];
-
             $numerical_limits = [
-                'Foundations and Basics' => 1,
-                'Order of Operations' => 1,
+                'Foundations and Basics' => 3,
+                'Order of Operations' => 3,
             ];
-
             $analytical_limits = [
-                'Data Interpretation' => 1,
-                'Logical Reasoning' => 1,
+                'Data Interpretation' => 10,
+                'Logical Reasoning' => 3,
             ];
-
             $general_limits = [
-                'Philippine History' => 1,
+                'Philippine History' => 3,
             ];
-
-
             function prepareQuestionRow($row, $source_table)
             {
                 $choices = [
@@ -46,8 +36,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 $row['shuffled_choices'] = $choices;
                 return $row;
             }
-
-
             function fetchQuestionsByCategory($conn, $table, $category_limits)
             {
                 $questions = [];
@@ -98,22 +86,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 }
                 return $questions;
             }
-
-
-
             // Fetch from all tables
             $questions = array_merge(
                 fetchQuestionsByCategory($conn, 'verbal', $verbal_category_limits),
-                fetchQuestionsByCategory($conn, 'numerical', $numerical_limits),
                 fetchQuestionsByCategory($conn, 'analytical', $analytical_limits),
+                fetchQuestionsByCategory($conn, 'numerical', $numerical_limits),
                 fetchQuestionsByCategory($conn, 'general', $general_limits)
-
             );
-
             // Optionally shuffle the entire set
             // shuffle($questions);
             ?>
-
             <form action="actions/submit_index.php" method="post" id="quizForm">
                 <?php foreach ($questions as $index => $q): ?>
                     <div class="card" data-index="<?= $index ?>" data-id="<?= $q['id'] ?>">
@@ -127,22 +109,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                     style="max-width: 50%; height: auto;">
                             </div>
                         <?php endif; ?>
-
                         <?php if (!empty($q['chart_data'])): ?>
-
                             <div class="chart-container">
                                 <canvas id="chart<?= $index ?>"></canvas>
                             </div>
-
                             <script>
-
                                 // original
                                 const chartData<?= $index ?> = <?= $q['chart_data'] ?>;
                                 const ctx<?= $index ?> = document.getElementById('chart<?= $index ?>').getContext('2d');
-
                                 // If `type` exists in the database, use it, otherwise default to 'bar'
                                 const chartType<?= $index ?> = '<?= $q['type'] ?? 'bar' ?>';
-
                                 new Chart(ctx<?= $index ?>, {
                                     type: chartType<?= $index ?>,
                                     data: chartData<?= $index ?>,
@@ -167,26 +143,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                         events: []
                                     }
                                 });
-
                             </script>
                         <?php endif; ?>
-
-
                         <div class="radio-group">
                             <?php foreach ($q['shuffled_choices'] as $choice): ?>
                                 <input type="hidden" name="questions[<?= $index ?>][id]" value="<?= $q['id'] ?>">
                                 <input type="hidden" name="questions[<?= $index ?>][table]" value="<?= $q['source_table'] ?>">
-
                                 <?php
                                 $ext = strtolower(pathinfo($choice, PATHINFO_EXTENSION));
                                 $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']);
                                 ?>
-
                                 <label class="custom-radio" style="display: block; margin-bottom: 10px;">
                                     <input type="radio" name="questions[<?= $index ?>][answer]"
                                         value="<?= htmlspecialchars($choice) ?>" required>
                                     <span class="radio-mark"></span>
-
                                     <?php if ($isImage): ?>
                                         <img src="assets/images/<?= htmlspecialchars($choice) ?>" alt="Choice Image"
                                             style="max-width: 50%; height: auto;">
@@ -198,17 +168,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         </div>
                     </div>
                 <?php endforeach; ?>
-
                 <div class="navigation">
                     <button type="button" id="prevBtn">Previous</button>
                     <button type="button" id="nextBtn">Next</button>
                 </div>
-
                 <div style="text-align:center; margin-top:15px;">
                     <button type="submit" id="submitBtn" hidden aria-hidden="true" tabindex="-1"></button>
                 </div>
             </form>
-
             <script>
                 const cards = document.querySelectorAll('.card');
                 const totalQuestions = cards.length;
@@ -216,10 +183,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 const prevBtn = document.getElementById('prevBtn');
                 const submitBtn = document.getElementById('submitBtn');
                 const quizForm = document.getElementById('quizForm');
-
                 const answered = new Set();
                 let currentCard = 0;
-
                 function updateCards() {
                     cards.forEach((card, index) => {
                         if (index === currentCard && !answered.has(index)) {
@@ -228,7 +193,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             card.classList.remove('active');
                         }
                     });
-
                     // Always show navigation buttons
                     prevBtn.style.display = 'inline-block';
                     nextBtn.style.display = 'inline-block';
@@ -238,7 +202,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         quizForm.submit(); // Auto-submit
                     }
                 }
-
                 // Handle answer selection
                 document.querySelectorAll('input[type="radio"]').forEach(input => {
                     input.addEventListener('change', function () {
@@ -246,7 +209,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         const index = parseInt(parentCard.dataset.index);
                         answered.add(index);
                         parentCard.classList.remove('active');
-
                         // Go to next unanswered question
                         let next = index + 1;
                         while (next < totalQuestions && answered.has(next)) next++;
@@ -257,14 +219,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             while (prev >= 0 && answered.has(prev)) prev--;
                             currentCard = prev >= 0 ? prev : 0;
                         }
-
                         updateCards();
                     });
                 });
-
                 nextBtn.addEventListener('click', () => {
                     let next = currentCard + 1;
-
                     // Wrap around to start if needed
                     while (next !== currentCard) {
                         if (next >= totalQuestions) next = 0;
@@ -276,10 +235,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         next++;
                     }
                 });
-
                 prevBtn.addEventListener('click', () => {
                     let prev = currentCard - 1;
-
                     // Wrap around to end if needed
                     while (prev !== currentCard) {
                         if (prev < 0) prev = totalQuestions - 1;
@@ -291,7 +248,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         prev--;
                     }
                 });
-
                 // Initialize to first unanswered
                 function findFirstUnanswered() {
                     for (let i = 0; i < totalQuestions; i++) {
@@ -299,14 +255,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     }
                     return -1;
                 }
-
                 currentCard = findFirstUnanswered();
                 updateCards();
             </script>
-
         </div>
     </main>
-
     <?php include('includes/footer.php'); ?> <!-- Include footer.php for the footer -->
 </body>
 
